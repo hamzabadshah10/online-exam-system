@@ -276,7 +276,7 @@ function navLink($currentTab, $linkTab, $label, $icon) {
             </svg>
         </div>
         <div>
-            <p class="text-sm text-amber-800 font-black uppercase tracking-widest mb-1.5">Standardized CSV Architecture Required:</p>
+            <p class="text-sm text-amber-800 font-black uppercase tracking-widest mb-1.5">Mcqs Format</p>
             <code class="text-xs font-mono bg-white px-4 py-2 inline-block rounded-xl border border-amber-200 text-amber-700 font-bold shadow-sm">Question, Option A, Option B, Option C, Option D, Correct Option (A/B/C/D)</code>
         </div>
     </div>
@@ -299,7 +299,7 @@ function navLink($currentTab, $linkTab, $label, $icon) {
             </div>
 
             <div class="space-y-4">
-                <label class="block text-[11px] font-black text-slate-600 tracking-widest uppercase ml-2">2. Data Acquisition</label>
+                <label class="block text-[11px] font-black text-slate-600 tracking-widest uppercase ml-2">Data Upload Here</label>
                 <div id="drop-zone" class="bg-white border-2 border-dashed border-indigo-200 rounded-[1.5rem] p-10 text-center hover:bg-indigo-50/30 hover:border-indigo-500 transition-all duration-500 cursor-pointer relative group flex flex-col items-center justify-center min-h-[220px] shadow-xl shadow-indigo-100/20">
                     <input type="file" name="csv_file" id="csv-file-input" accept=".csv" required class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10">
                     
@@ -383,7 +383,7 @@ function navLink($currentTab, $linkTab, $label, $icon) {
         </div>
         
         <div class="relative w-full sm:w-80">
-            <input type="text" id="live-search" placeholder="Search activity..." class="w-full bg-white border-2 border-indigo-50 rounded-2xl text-sm pl-6 pr-14 py-3.5 focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 shadow-xl shadow-indigo-100/50 transition-all font-black text-slate-700 placeholder:text-slate-300">
+            <input type="text" id="live-search" placeholder="Search activity..." class="w-full bg-white border-2 border-indigo-50 rounded-2xl text-sm pl-6 pr-14 py-3.5 focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 shadow-xl shadow-indigo-100/50 transition-all font-black text-slate-700 placeholder:text-slate-500">
             <div class="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-indigo-600 text-white rounded-xl shadow-lg shadow-indigo-200">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
             </div>
@@ -504,7 +504,7 @@ foreach ($all_results as $rs) {
             <span>All Student Results</span>
         </h4>
         <div class="relative">
-            <input type="text" id="results-search" placeholder="Search Subject or Exam..." class="bg-white border-2 border-indigo-50 rounded-2xl text-sm pl-5 pr-12 py-3 focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 shadow-xl shadow-indigo-100/50 w-full sm:w-80 transition-all font-bold text-slate-700 placeholder:text-slate-300">
+            <input type="text" id="results-search" placeholder="Search Subject or Exam..." class="bg-white border-2 border-indigo-50 rounded-2xl text-sm pl-5 pr-12 py-3 focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 shadow-xl shadow-indigo-100/50 w-full sm:w-80 transition-all font-bold text-slate-700 placeholder:text-slate-500">
             <div class="absolute right-4 top-1/2 -translate-y-1/2 p-1.5 bg-indigo-600 text-white rounded-lg shadow-lg shadow-indigo-200">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
             </div>
@@ -780,7 +780,7 @@ $total_stu = count($students);
         </div>
         
         <div class="relative flex-1 max-w-md">
-            <input type="text" id="student-search" placeholder="Search by name or email..." class="w-full bg-white border-2 border-indigo-50 rounded-2xl text-sm pl-6 pr-14 py-4 focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 shadow-xl shadow-indigo-100/50 transition-all font-black text-slate-700 placeholder:text-slate-300">
+            <input type="text" id="student-search" placeholder="Search by name or email..." class="w-full bg-white border-2 border-indigo-50 rounded-2xl text-sm pl-6 pr-14 py-4 focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 shadow-xl shadow-indigo-100/50 transition-all font-black text-slate-700 placeholder:text-slate-500">
             <div class="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-indigo-600 text-white rounded-xl shadow-lg shadow-indigo-200">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
             </div>
