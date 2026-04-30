@@ -58,9 +58,9 @@
     <main class="container mx-auto px-8 flex-1 flex flex-col lg:flex-row items-center gap-20 py-10 z-10">
         <!-- Left: Hero Text -->
         <div class="flex-1 text-center lg:text-left">
-            <div class="inline-flex items-center space-x-2 bg-white border border-slate-100 px-5 py-2 rounded-full shadow-sm mb-8">
-                <span class="w-2 h-2 bg-indigo-500 rounded-full animate-pulse"></span>
-                <span class="text-[10px] font-black text-slate-600 uppercase tracking-[0.2em]">Now processing 150k+ daily certifications</span>
+            <div class="inline-flex items-center space-x-3 bg-gradient-to-r from-indigo-600 to-blue-500 border border-indigo-400/30 px-6 py-2.5 rounded-full shadow-[0_10px_25px_rgba(79,70,229,0.3)] mb-10 group/pill">
+                <span class="w-2.5 h-2.5 bg-emerald-400 rounded-full animate-pulse shadow-[0_0_12px_rgba(52,211,153,0.8)]"></span>
+                <span class="text-[10px] font-black text-white uppercase tracking-[0.25em] drop-shadow-sm">Now processing 150k+ daily certifications</span>
             </div>
             <h2 class="text-6xl lg:text-8xl font-black text-slate-900 tracking-tighter leading-[0.9] mb-10">
                 The Future of <br/>
@@ -85,7 +85,7 @@
             <div class="absolute -right-10 top-1/2 -translate-y-1/2 w-80 h-80 border-2 border-indigo-100 rounded-full opacity-40 -z-10"></div>
             
             <!-- Student Login -->
-            <div class="bg-white p-10 rounded-[3rem] shadow-2xl shadow-slate-200/50 border border-gray-100 relative overflow-hidden group hover:-translate-y-2 transition-all duration-500">
+            <div class="bg-white p-10 rounded-[3rem] shadow-[0_20px_50px_rgba(79,70,229,0.15)] border border-gray-100 relative overflow-hidden group hover:-translate-y-2 transition-all duration-500">
                 <div class="relative z-10">
                     <div class="w-14 h-14 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
                         <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"></path></svg>
@@ -106,6 +106,15 @@
                                 </button>
                             </div>
                         </div>
+                        <div class="flex items-center justify-between ml-1">
+                            <label class="flex items-center space-x-3 cursor-pointer group/check">
+                                <div class="relative flex items-center justify-center">
+                                    <input type="checkbox" name="remember" class="peer h-5 w-5 cursor-pointer appearance-none rounded-lg border-2 border-slate-100 bg-slate-50 transition-all checked:bg-indigo-600 checked:border-indigo-600 focus:ring-0 focus:ring-offset-0"/>
+                                    <svg class="absolute h-3 w-3 text-white opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path></svg>
+                                </div>
+                                <span class="text-[10px] font-black text-slate-600 uppercase tracking-widest group-hover/check:text-indigo-600 transition-colors">Remember Me</span>
+                            </label>
+                        </div>
                         <button type="submit" class="w-full bg-indigo-600 text-white py-4 rounded-2xl text-xs font-black uppercase tracking-widest shadow-lg shadow-indigo-100 hover:bg-indigo-700 active:scale-95 transition-all">Login</button>
                         <p class="text-[9px] font-black text-slate-600 text-center uppercase tracking-widest mt-4">
                             New user? <a href="register.php" class="text-indigo-600 hover:underline">Register Now</a>
@@ -115,7 +124,7 @@
             </div>
 
             <!-- Admin Login -->
-            <div class="bg-slate-900 p-10 rounded-[3rem] shadow-2xl shadow-slate-400/20 border border-slate-800 relative overflow-hidden group hover:-translate-y-2 transition-all duration-500">
+            <div class="bg-slate-900 p-10 rounded-[3rem] shadow-[0_20px_50px_rgba(30,58,95,0.4)] border border-slate-800 relative overflow-hidden group hover:-translate-y-2 transition-all duration-500">
                 <div class="relative z-10 text-white">
                     <div class="w-14 h-14 bg-white/10 text-white rounded-2xl flex items-center justify-center mb-8 group-hover:bg-white group-hover:text-slate-900 transition-colors">
                         <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>

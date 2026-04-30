@@ -29,6 +29,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
+    // Admin Action: Update Exam Status
+    if ($action === 'update_status' && $_SESSION['role'] === 'admin') {
+        $exam_id = (int)$_POST['exam_id'];
+        $new_status = $_POST['status'];
+        $stmt = $pdo->prepare("UPDATE exams SET status = ? WHERE id = ?");
+        $stmt->execute([$new_status, $exam_id]);
+        $_SESSION['success'] = "Exam status updated to '{$new_status}'";
+        header('Location: ../admin/dashboard.php');
+        exit;
+    }
+
     // Student Action: Enroll in Exam
     if ($action === 'enroll' && $_SESSION['role'] === 'student') {
         $exam_id = (int)$_POST['exam_id'];
@@ -92,7 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt_r = $pdo->prepare("INSERT INTO results (enrollment_id, total_score, total_correct, total_incorrect, status, auto_submitted, responses) VALUES (?, ?, ?, ?, ?, ?, ?)");
         $stmt_r->execute([$enrollment_id, $score, $correct, $incorrect, $status, $auto_submitted, $responses_json]);
 
-        header("Location: ../student/dashboard.php");
+        header("Location: ../student/dashboard.php?tab=exam_results");
         exit;
     }
 }

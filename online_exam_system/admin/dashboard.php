@@ -80,7 +80,7 @@ function navLink($currentTab, $linkTab, $label, $icon) {
     <div class="flex items-center space-x-4">
         <!-- Profile Pill (Top Bar) -->
         <div class="bg-white/5 border border-white/10 px-4 py-2 rounded-xl flex items-center space-x-3 shadow-inner group hover:bg-white/10 transition-all cursor-default">
-            <div class="w-8 h-8 bg-gradient-to-tr from-indigo-400 to-blue-300 rounded-lg border border-white/20 shadow-md group-hover:rotate-12 transition-transform"></div>
+            <div class="w-8 h-8 bg-gradient-to-tr from-indigo-400 to-blue-300 rounded-lg border border-white/20 shadow-md group-hover:rotate-12 transition-transform flex items-center justify-center text-white font-black text-xs">A</div>
             <span class="text-xs font-black text-white/90 tracking-tight"><?php echo htmlspecialchars($_SESSION['name']); ?></span>
         </div>
         <!-- Compact Premium Logout -->
@@ -183,7 +183,7 @@ function navLink($currentTab, $linkTab, $label, $icon) {
             <div class="overflow-x-auto">
                 <table class="w-full text-left text-sm whitespace-nowrap">
                     <thead>
-                        <tr class="bg-indigo-50/30 text-indigo-900 uppercase text-[12px] font-black tracking-widest border-b border-indigo-100">
+                        <tr class="bg-gradient-to-r from-[#1e3a5f] to-[#2563eb] text-white uppercase text-[11px] font-black tracking-widest">
                             <th class="px-8 py-6">Subject & Title</th>
                             <th class="px-8 py-6 text-center">Registrations</th>
                             <th class="px-8 py-6">Status</th>
@@ -209,13 +209,25 @@ function navLink($currentTab, $linkTab, $label, $icon) {
                                         "><?= $enr['status'] ?></span>
                                     </td>
                                     <td class="px-8 py-7 text-center">
-                                        <form action="../api/delete_record.php" method="POST" onsubmit="return confirm('Delete this exam?');">
-                                            <input type="hidden" name="type" value="exam">
-                                            <input type="hidden" name="id" value="<?= $enr['exam_id'] ?>">
-                                            <button type="submit" class="p-3 bg-rose-50 hover:bg-rose-600 text-rose-500 hover:text-white border border-rose-100 hover:border-rose-600 rounded-2xl transition-all duration-300 shadow-sm active:scale-95">
-                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
-                                            </button>
-                                        </form>
+                                        <div class="flex items-center justify-center space-x-3">
+                                            <?php if($enr['status'] !== 'completed'): ?>
+                                                <form action="../api/exam_manager.php" method="POST">
+                                                    <input type="hidden" name="action" value="update_status">
+                                                    <input type="hidden" name="exam_id" value="<?= $enr['exam_id'] ?>">
+                                                    <input type="hidden" name="status" value="completed">
+                                                    <button type="submit" class="p-3 bg-indigo-50 hover:bg-indigo-600 text-indigo-600 hover:text-white border border-indigo-100 hover:border-indigo-600 rounded-2xl transition-all duration-300 shadow-sm active:scale-95 group/check" title="Mark as Completed">
+                                                        <svg class="w-4 h-4 group-hover/check:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                                                    </button>
+                                                </form>
+                                            <?php endif; ?>
+                                            <form action="../api/delete_record.php" method="POST" onsubmit="return confirm('Delete this exam?');">
+                                                <input type="hidden" name="type" value="exam">
+                                                <input type="hidden" name="id" value="<?= $enr['exam_id'] ?>">
+                                                <button type="submit" class="p-3 bg-rose-50 hover:bg-rose-600 text-rose-500 hover:text-white border border-rose-100 hover:border-rose-600 rounded-2xl transition-all duration-300 shadow-sm active:scale-95 group/del" title="Delete Exam">
+                                                    <svg class="w-4 h-4 group-hover/del:rotate-12 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                                                </button>
+                                            </form>
+                                        </div>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -403,7 +415,7 @@ function navLink($currentTab, $linkTab, $label, $icon) {
     <div class="overflow-x-auto w-full">
         <table class="w-full text-left text-sm whitespace-nowrap">
             <thead>
-                <tr class="bg-indigo-50/30 text-indigo-900 uppercase text-[12px] font-black tracking-widest border-b border-indigo-100">
+                <tr class="bg-gradient-to-r from-[#1e3a5f] to-[#2563eb] text-white uppercase text-[11px] font-black tracking-widest">
                     <th class="px-8 py-6">Candidate Details</th>
                     <th class="px-8 py-6">Examination Identity</th>
                     <th class="px-8 py-6 text-right">Activity Status</th>
@@ -648,7 +660,7 @@ foreach ($all_results as $rs) {
             <div class="overflow-x-auto">
                 <table class="w-full text-left text-sm whitespace-nowrap">
                     <thead>
-                    <tr class="bg-white text-gray-400 uppercase text-[11px] tracking-widest border-b border-gray-200">
+                    <tr class="bg-gradient-to-r from-[#1e3a5f] to-[#2563eb] text-white uppercase text-[11px] font-black tracking-widest">
                         <th class="p-4 font-bold">Student Name</th>
                         <th class="p-4 font-bold">Roll Number</th>
                         <th class="p-4 font-bold text-center">Score</th>
@@ -801,7 +813,7 @@ $total_stu = count($students);
         <div class="overflow-x-auto w-full">
             <table class="w-full text-left text-sm whitespace-nowrap">
                 <thead>
-                    <tr class="bg-indigo-50/30 text-indigo-900 uppercase text-[12px] font-black tracking-widest border-b border-indigo-100">
+                    <tr class="bg-gradient-to-r from-[#1e3a5f] to-[#2563eb] text-white uppercase text-[11px] font-black tracking-widest">
                         <th class="px-8 py-6">Student Identity</th>
                         <th class="px-8 py-6">System ID</th>
                         <th class="px-8 py-6">Access Credentials</th>

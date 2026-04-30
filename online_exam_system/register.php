@@ -89,10 +89,6 @@
         </form>
     </main>
 
-    <!-- Footer Decoration -->
-    <div class="fixed bottom-8 text-center w-full hidden lg:block">
-        <p class="text-[9px] font-black text-slate-500 uppercase tracking-[0.5em]">EduQuest Security Infrastructure • End-to-End Encryption Enabled</p>
-    </div>
 
 <script>
 function togglePassword(btn) {

@@ -77,22 +77,34 @@ function navLink($currentTab, $linkTab, $label, $icon) {
 <div class="flex-1 w-full flex flex-col overflow-hidden">
 
 <section class="flex flex-col w-full h-full bg-white">
-<div class="flex justify-between items-center px-6 py-4 bg-brand-sidebar border-b-2 border-white z-20 flex-shrink-0">
+<div class="flex justify-between items-center px-8 py-5 bg-[#1e3a5f] border-b border-white/5 z-20 flex-shrink-0 shadow-2xl">
+    <div class="flex items-center space-x-6">
     <div class="flex items-center space-x-4 text-white">
-        <div class="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center font-black text-white tracking-widest text-md shadow-inner border border-blue-400">ST</div>
+        <div class="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center font-black text-white tracking-widest text-md shadow-inner border border-indigo-500">SP</div>
         <div class="flex flex-col">
             <div class="font-bold text-white tracking-wide leading-tight">Student Portal</div>
-            <div class="text-[10px] text-blue-300 font-bold uppercase tracking-widest">Main Dashboard</div>
+            <div class="text-[10px] text-indigo-300 font-bold uppercase tracking-widest">Access Level</div>
         </div>
     </div>
+    </div>
     <div class="flex items-center space-x-4">
-        <a href="../api/auth.php?action=logout" class="bg-red-500 hover:bg-red-600 text-white px-6 py-1.5 rounded-md font-bold text-sm transition shadow-sm shadow-red-500/30">Logout</a>
+        <!-- Profile Pill (Top Bar) -->
+        <div class="bg-white/5 border border-white/10 px-4 py-2 rounded-xl flex items-center space-x-3 shadow-inner group hover:bg-white/10 transition-all cursor-default">
+            <div class="w-8 h-8 bg-gradient-to-tr from-indigo-400 to-blue-300 rounded-lg border border-white/20 shadow-md group-hover:rotate-12 transition-transform flex items-center justify-center text-white font-black text-xs"><?= substr($_SESSION['name'], 0, 1) ?></div>
+            <span class="text-xs font-black text-white/90 tracking-tight"><?php echo htmlspecialchars($_SESSION['name']); ?></span>
+        </div>
+        
+        <!-- Compact Premium Logout -->
+        <a href="../api/auth.php?action=logout" class="flex items-center space-x-2 bg-rose-500 hover:bg-rose-600 text-white px-5 py-2.5 rounded-xl font-black text-[10px] uppercase tracking-widest transition-all shadow-lg shadow-rose-900/40 active:scale-95 group">
+            <span>Logout</span>
+            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+        </a>
     </div>
 </div>
 <div class="bg-white overflow-hidden flex flex-1 relative">
 
-<aside class="w-72 bg-brand-sidebar text-white flex-col hidden md:flex border-r border-gray-800/20 box-border z-10 transition-all">
-<nav class="flex-1 px-5 py-6 space-y-2">
+<aside class="w-72 bg-[#1e3a5f] text-white flex-col hidden md:flex border-r border-white/5 box-border z-10 transition-all">
+<nav class="flex-1 px-5 py-10 space-y-3">
 <?= navLink($tab, 'dashboard', 'Dashboard', $icons['dashboard']) ?>
 <?= navLink($tab, 'available_exams', 'Available Exams', $icons['exams']) ?>
 <?= navLink($tab, 'my_enrollments', 'My Enrollments', $icons['enrollments']) ?>
@@ -101,21 +113,26 @@ function navLink($currentTab, $linkTab, $label, $icon) {
 </aside>
 
 <main class="flex-1 bg-brand-bg p-8 overflow-y-auto no-scrollbar relative w-full overflow-hidden">
-<div class="flex justify-between items-center mb-8 bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+<div class="flex justify-between items-center mb-8 bg-white p-6 rounded-[2rem] shadow-xl shadow-slate-200/50 border border-gray-100">
 <h3 class="text-2xl font-black text-slate-800 capitalize tracking-tight flex items-center space-x-2">
-    <span class="bg-blue-600 w-2 h-8 rounded-full block mr-2"></span>
-    <?php 
-        if ($tab === 'dashboard') echo "Welcome, " . htmlspecialchars($_SESSION['name']) . "!";
-        else if ($tab === 'available_exams') echo "Available Exams";
-        else if ($tab === 'my_enrollments') echo "My Enrollments";
-        else if ($tab === 'exam_results') echo "Exam Results";
-    ?>
+    <span class="bg-blue-600 w-2.5 h-10 rounded-full block mr-3 shadow-lg shadow-blue-200"></span>
+    <div>
+        <p class="text-[10px] font-black text-blue-500 uppercase tracking-widest mb-0.5">Welcome Back</p>
+        <span class="text-3xl tracking-tighter">
+            <?php 
+                if ($tab === 'dashboard') echo htmlspecialchars($_SESSION['name']) . "!";
+                else if ($tab === 'available_exams') echo "Available Exams";
+                else if ($tab === 'my_enrollments') echo "My Enrollments";
+                else if ($tab === 'exam_results') echo "Exam Results";
+            ?>
+        </span>
+    </div>
 </h3>
-<div class="flex items-center space-x-4">
-<div class="bg-gray-100 border border-gray-200 px-4 py-2 rounded-full flex items-center space-x-3 shadow-inner">
-<div class="w-8 h-8 bg-gradient-to-tr from-blue-400 to-blue-300 rounded-full border-2 border-white shadow-sm flex items-center justify-center text-[10px] font-bold text-white uppercase"><?= substr($_SESSION['name'], 0, 1) ?></div>
-<span class="text-sm font-bold text-gray-700"><?php echo htmlspecialchars($_SESSION['name']); ?></span>
-</div>
+<div class="flex items-center space-x-6">
+    <div class="flex items-center space-x-2 text-[10px] font-black text-slate-600 uppercase tracking-widest bg-slate-50 px-4 py-2 rounded-xl border border-slate-100">
+        <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
+        <span>System Status: Online</span>
+    </div>
 </div>
 </div>
 
