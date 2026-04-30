@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Online Examination System</title>
+<!-- Tailwind CSS v3 with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Custom Tailwind Configuration for specific colors -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'brand-dark': '#1e293b',
+            'brand-blue': '#3b82f6',
+            'brand-sidebar': '#243b55',
+            'brand-bg': '#f1f5f9',
+            'card-total': '#3b82f6',
+            'card-active': '#64748b',
+            'card-pending': '#f87171',
+            'card-recent': '#10b981',
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="scrollbar-hiding">
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+    }
+  </style>
+</head>
+<body class="bg-gray-100 font-sans text-gray-800">
+<!-- BEGIN: MainContainer -->
+<div class="max-w-[1280px] mx-auto p-4 md:p-8 space-y-12">
+<header class="text-center mb-8">
+<h1 class="text-3xl font-bold text-brand-dark">Online Examination System</h1>
+</header>
+<div class="grid grid-cols-1 xl:grid-cols-2 gap-12">
+<!-- BEGIN: AdminDashboardSection -->
+<section class="flex flex-col" data-purpose="admin-dashboard">
+<h2 class="text-xl font-semibold mb-4 text-gray-700">Admin Dashboard</h2>
+<div class="bg-white rounded-xl shadow-2xl overflow-hidden flex min-h-[700px] border border-gray-200">
+<!-- BEGIN: AdminSidebar -->
+<aside class="w-64 bg-brand-sidebar text-white hidden md:flex flex-col">
+<div class="p-6 flex items-center space-x-3">
+<div class="w-10 h-10 bg-blue-400 rounded-md flex items-center justify-center">
+<svg class="w-6 h-6" fill="currentColor" viewbox="0 0 20 20"><path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0z"></path></svg>
+</div>
+<div class="h-4 w-24 bg-gray-400/50 rounded"></div>
+</div>
+<nav class="flex-1 px-4 py-4 space-y-1">
+<a class="flex items-center space-x-3 bg-blue-600 p-3 rounded-lg" href="#"><span class="w-4 h-4 bg-white/20"></span><span>Dashboard</span></a>
+<a class="flex items-center space-x-3 hover:bg-white/10 p-3 rounded-lg" href="#"><span class="w-4 h-4 bg-white/20"></span><span>Manage Exams</span></a>
+<a class="flex items-center space-x-3 hover:bg-white/10 p-3 rounded-lg" href="#"><span class="w-4 h-4 bg-white/20"></span><span>Question Bank</span></a>
+<a class="flex items-center space-x-3 hover:bg-white/10 p-3 rounded-lg" href="#"><span class="w-4 h-4 bg-white/20"></span><span>Student Management</span></a>
+<a class="flex items-center space-x-3 hover:bg-white/10 p-3 rounded-lg" href="#"><span class="w-4 h-4 bg-white/20"></span><span>Live Monitoring</span></a>
+<a class="flex items-center space-x-3 hover:bg-white/10 p-3 rounded-lg" href="#"><span class="w-4 h-4 bg-white/20"></span><span>Results</span></a>
+</nav>
+</aside>
+<!-- END: AdminSidebar -->
+<!-- BEGIN: AdminMainContent -->
+<main class="flex-1 bg-brand-bg p-6 overflow-y-auto no-scrollbar">
+<!-- Header -->
+<div class="flex justify-between items-center mb-8">
+<h3 class="text-2xl font-bold text-slate-800">Admin Dashboard</h3>
+<div class="flex items-center space-x-4">
+<button class="text-gray-500"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></button>
+<div class="bg-gray-200 px-3 py-1 rounded-full flex items-center space-x-2">
+<div class="w-6 h-6 bg-gray-400 rounded-full"></div>
+<span class="text-sm">Admin</span>
+<svg class="w-4 h-4" fill="currentColor" viewbox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"></path></svg>
+</div>
+</div>
+</div>
+<!-- Metrics -->
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+<div class="bg-card-total text-white p-4 rounded-xl shadow-sm">
+<p class="text-sm opacity-80">Total Students</p>
+<p class="text-2xl font-bold">320</p>
+</div>
+<div class="bg-card-active text-white p-4 rounded-xl shadow-sm">
+<p class="text-sm opacity-80">Active Exams</p>
+<p class="text-2xl font-bold">5</p>
+</div>
+<div class="bg-card-pending text-white p-4 rounded-xl shadow-sm">
+<p class="text-sm opacity-80">Pending Results</p>
+<p class="text-2xl font-bold">2</p>
+</div>
+<div class="bg-card-recent text-white p-4 rounded-xl shadow-sm">
+<p class="text-sm opacity-80">Recent Activity</p>
+<div class="h-8 w-full mt-1">
+<svg class="w-full h-full stroke-white fill-none" viewbox="0 0 100 20"><path d="M0 15 L20 10 L40 18 L60 5 L80 12 L100 8" stroke-width="2"></path></svg>
+</div>
+</div>
+</div>
+<!-- Enrollment Status -->
+<div class="bg-white rounded-xl p-4 shadow-sm mb-6 border border-gray-100">
+<h4 class="font-bold mb-4">Enrollment Status</h4>
+<div class="overflow-x-auto">
+<table class="w-full text-left text-sm">
+<thead>
+<tr class="bg-gray-50 text-gray-500">
+<th class="p-2 border-b">Exam Title</th>
+<th class="p-2 border-b">Registered Students</th>
+<th class="p-2 border-b">Start Date</th>
+</tr>
+</thead>
+<tbody class="text-gray-700">
+<tr class="border-b last:border-0">
+<td class="p-2">Midterm Exam</td>
+<td class="p-2">320</td>
+<td class="p-2">April 15, 2024</td>
+</tr>
+<tr class="border-b last:border-0">
+<td class="p-2">Web Development Quiz</td>
+<td class="p-2">37</td>
+<td class="p-2">April 18, 2024</td>
+</tr>
+<tr class="border-b last:border-0">
+<td class="p-2">Database Test</td>
+<td class="p-2">37</td>
+<td class="p-2">April 18, 2024</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Live Exam Monitoring -->
+<div class="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
+<h4 class="font-bold mb-4">Live Exam Monitoring</h4>
+<div class="overflow-x-auto">
+<table class="w-full text-left text-sm">
+<thead>
+<tr class="bg-gray-50 text-gray-500">
+<th class="p-2 border-b">Student Name</th>
+<th class="p-2 border-b">Status</th>
+<th class="p-2 border-b">Time Left</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b last:border-0">
+<td class="p-2">Ali Ahmed</td>
+<td class="p-2 text-green-600 font-medium">In Progress</td>
+<td class="p-2">28:03</td>
+</tr>
+<tr class="border-b last:border-0">
+<td class="p-2">Sara Khan</td>
+<td class="p-2 text-blue-600 font-medium">Submitted</td>
+<td class="p-2">—</td>
+</tr>
+<tr class="border-b last:border-0">
+<td class="p-2">Zain Raza</td>
+<td class="p-2 text-red-600 font-medium">Auto-Submitted</td>
+<td class="p-2">—</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</main>
+<!-- END: AdminMainContent -->
+</div>
+</section>
+<!-- END: AdminDashboardSection -->
+<!-- BEGIN: StudentPortalSection -->
+<section class="flex flex-col relative" data-purpose="student-portal">
+<h2 class="text-xl font-semibold mb-4 text-gray-700">Student Portal</h2>
+<div class="bg-white rounded-xl shadow-2xl overflow-hidden flex min-h-[700px] border border-gray-200">
+<!-- BEGIN: StudentSidebar -->
+<aside class="w-64 bg-brand-sidebar text-white hidden md:flex flex-col">
+<div class="p-6 flex items-center space-x-3">
+<div class="w-10 h-10 bg-blue-400 rounded-md flex items-center justify-center">
+<svg class="w-6 h-6" fill="currentColor" viewbox="0 0 20 20"><path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0z"></path></svg>
+</div>
+<div class="h-4 w-24 bg-gray-400/50 rounded"></div>
+</div>
+<nav class="flex-1 px-4 py-4 space-y-1">
+<a class="flex items-center space-x-3 bg-blue-600 p-3 rounded-lg" href="#"><span class="w-4 h-4 bg-white/20"></span><span>Dashboard</span></a>
+<a class="flex items-center space-x-3 hover:bg-white/10 p-3 rounded-lg" href="#"><span class="w-4 h-4 bg-white/20"></span><span>Upcoming Exams</span></a>
+<a class="flex items-center space-x-3 hover:bg-white/10 p-3 rounded-lg" href="#"><span class="w-4 h-4 bg-white/20"></span><span>My Enrollments</span></a>
+<a class="flex items-center space-x-3 hover:bg-white/10 p-3 rounded-lg" href="#"><span class="w-4 h-4 bg-white/20"></span><span>Take Exam</span></a>
+<a class="flex items-center space-x-3 hover:bg-white/10 p-3 rounded-lg" href="#"><span class="w-4 h-4 bg-white/20"></span><span>Results</span></a>
+</nav>
+</aside>
+<!-- END: StudentSidebar -->
+<!-- BEGIN: StudentMainContent -->
+<main class="flex-1 bg-brand-bg p-6 overflow-y-auto no-scrollbar">
+<!-- Header -->
+<div class="flex justify-between items-center mb-8">
+<h3 class="text-2xl font-bold text-slate-800">Welcome, Hamza!</h3>
+<div class="flex items-center space-x-4">
+<button class="text-gray-500"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></button>
+<div class="bg-gray-200 px-3 py-1 rounded-full flex items-center space-x-2">
+<div class="w-6 h-6 bg-gray-400 rounded-full"></div>
+<span class="text-sm">Student</span>
+<svg class="w-4 h-4" fill="currentColor" viewbox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"></path></svg>
+</div>
+</div>
+</div>
+<!-- Upcoming Exams -->
+<div class="mb-8">
+<h4 class="font-bold mb-4">Upcoming Exams</h4>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between">
+<div>
+<p class="font-bold">Midterm Exam</p>
+<p class="text-xs text-gray-500">April 15, 2024</p>
+</div>
+<button class="mt-4 bg-blue-600 text-white py-2 px-4 rounded-lg text-sm self-end">Enroll Now</button>
+</div>
+<div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between">
+<div>
+<p class="font-bold">Database Quiz</p>
+<p class="text-xs text-gray-500">April 18, 2024</p>
+</div>
+<button class="mt-4 bg-blue-600 text-white py-2 px-4 rounded-lg text-sm self-end">Enroll Now</button>
+</div>
+</div>
+</div>
+<!-- My Enrollments -->
+<div class="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
+<div class="flex justify-between items-center mb-4">
+<h4 class="font-bold">My Enrollments</h4>
+<div class="flex items-center space-x-1">
+<span class="text-xs text-gray-400">1</span>
+<div class="w-12 h-4 bg-gray-200 rounded-full flex items-center px-1">
+<div class="w-3 h-3 bg-white rounded-full shadow-sm"></div>
+</div>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left text-sm">
+<thead>
+<tr class="bg-gray-50 text-gray-500">
+<th class="p-2 border-b">Exam</th>
+<th class="p-2 border-b">Status</th>
+<th class="p-2 border-b">Actions</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b last:border-0">
+<td class="p-2">Web Dev Quiz</td>
+<td class="p-2">Enrolled</td>
+<td class="p-2 flex space-x-2">
+<button class="bg-blue-600 text-white px-3 py-1 rounded text-xs">Enter Exam</button>
+<button class="bg-blue-600 text-white px-3 py-1 rounded text-xs">Enter Exam</button>
+</td>
+</tr>
+<tr class="border-b last:border-0">
+<td class="p-2">Algorithms Test</td>
+<td class="p-2">Enrolled</td>
+<td class="p-2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Portal Buttons mimicking the small ones in image -->
+<div class="mt-4 flex justify-end space-x-2">
+<button class="bg-brand-sidebar text-white text-[10px] px-3 py-1 rounded flex items-center"><span class="mr-1">🚩</span> Log Results</button>
+<button class="bg-red-400 text-white text-[10px] px-3 py-1 rounded">Logout</button>
+</div>
+</main>
+<!-- END: StudentMainContent -->
+<!-- BEGIN: CreateExamModal -->
+<div class="absolute inset-0 bg-black/30 backdrop-blur-[2px] flex items-center justify-center p-4 z-20" data-purpose="modal-overlay">
+<div class="bg-white rounded-lg shadow-2xl w-full max-w-sm overflow-hidden">
+<div class="bg-brand-sidebar text-white p-3 flex justify-between items-center">
+<span class="text-sm font-semibold">Create New Exam</span>
+<button class="hover:text-gray-300">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</div>
+<div class="p-5 space-y-3">
+<div>
+<label class="text-[10px] uppercase font-bold text-gray-500 mb-1 block">Exam Title:</label>
+<input class="w-full border-gray-300 rounded-md text-sm p-2 bg-gray-50" type="text"/>
+</div>
+<div class="flex space-x-3">
+<div class="flex-1">
+<label class="text-[10px] uppercase font-bold text-gray-500 mb-1 block">Exam Date:</label>
+<select class="w-full border-gray-300 rounded-md text-sm p-2 bg-gray-50"><option>03.03.2024</option></select>
+</div>
+<div class="flex-1">
+<label class="text-[10px] uppercase font-bold text-gray-500 mb-1 block">Duration:</label>
+<select class="w-full border-gray-300 rounded-md text-sm p-2 bg-gray-50"><option>28:00</option></select>
+</div>
+</div>
+<div>
+<label class="text-[10px] uppercase font-bold text-gray-500 mb-1 block">Passing Marks:</label>
+<input class="w-full border-gray-300 rounded-md text-sm p-2 bg-gray-50" type="text"/>
+</div>
+<div>
+<label class="text-[10px] uppercase font-bold text-gray-500 mb-1 block">Select Questions:</label>
+<select class="w-full border-gray-300 rounded-md text-sm p-2 bg-gray-50"><option></option></select>
+</div>
+<button class="text-[10px] border border-gray-300 rounded px-2 py-1 flex items-center space-x-1"><span class="text-xs">⚙️</span><span>New Ordering</span></button>
+</div>
+<div class="p-3 bg-gray-50 flex justify-end space-x-2 border-t">
+<button class="px-4 py-1.5 border border-gray-300 rounded text-sm bg-white hover:bg-gray-100">Cancel</button>
+<button class="px-4 py-1.5 bg-brand-sidebar text-white rounded text-sm hover:bg-opacity-90">Create Exam</button>
+</div>
+</div>
+</div>
+<!-- END: CreateExamModal -->
+</div>
+</section>
+<!-- END: StudentPortalSection -->
+</div>
+<!-- BEGIN: ExamResultsSection -->
+<section class="pt-8" data-purpose="exam-results-preview">
+<h2 class="text-xl font-semibold mb-4 text-gray-700">Exam Window &amp; Results</h2>
+<div class="bg-slate-200/50 p-8 rounded-2xl border border-gray-200 shadow-inner">
+<div class="bg-[#1e293b] rounded-t-lg p-2 flex justify-between items-center">
+<div class="flex space-x-2 px-2">
+<span class="text-orange-400 font-bold italic text-lg">01</span>
+<div class="w-32 h-3 bg-gray-600 rounded mt-1.5"></div>
+</div>
+<div class="flex space-x-1.5">
+<div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+<div class="w-3 h-3 bg-orange-400 rounded-full"></div>
+<div class="w-3 h-3 bg-gray-400 rounded-full"></div>
+<div class="w-3 h-3 bg-gray-400 rounded-full"></div>
+<div class="w-3 h-3 bg-gray-100 rounded"></div>
+<div class="w-3 h-3 bg-brand-sidebar border border-gray-500 rounded"></div>
+</div>
+</div>
+<div class="bg-white p-8 rounded-b-lg grid grid-cols-1 md:grid-cols-2 gap-8 min-h-[400px]">
+<!-- Rules Column -->
+<div class="bg-white border border-gray-100 rounded-xl shadow-sm p-6">
+<div class="bg-blue-600/10 text-brand-sidebar p-3 text-center font-bold text-lg rounded-md mb-6">Online Examination</div>
+<p class="font-bold text-sm mb-3">Rules:</p>
+<ul class="space-y-2 mb-8">
+<li class="flex items-start text-xs text-gray-600"><span class="text-orange-500 mr-2 mt-0.5">✓</span> No tab-switching allowed.</li>
+<li class="flex items-start text-xs text-gray-600"><span class="text-orange-500 mr-2 mt-0.5">✓</span> Timer will auto-submit if rules are violated.</li>
+</ul>
+<div class="space-y-3">
+<div class="flex items-center text-xs text-gray-700"><span class="w-2 h-2 rounded-full bg-blue-500 mr-3"></span> Correct Answers: 17</div>
+<div class="flex items-center text-xs text-gray-700"><span class="w-2 h-2 rounded-full bg-green-500 mr-3"></span> Incorrect Answers: 3</div>
+<div class="flex items-center text-xs text-gray-700"><span class="w-2 h-2 rounded-full bg-orange-500 mr-3"></span> Status: PASS</div>
+</div>
+</div>
+<!-- Result Column -->
+<div class="bg-white border border-gray-100 rounded-xl shadow-sm p-6 text-center flex flex-col items-center">
+<div class="bg-blue-600/80 text-white w-full p-3 text-center font-bold text-lg rounded-md mb-6">Exam Results</div>
+<h4 class="text-xl font-bold text-slate-800 mb-2">Congratulations, Hamza!</h4>
+<p class="text-sm font-medium text-gray-600 mb-6">Your Score: 85%</p>
+<!-- Result Graph Mockup -->
+<div class="relative w-32 h-32 mb-6">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<circle class="stroke-gray-100" cx="18" cy="18" fill="none" r="14" stroke-width="4"></circle>
+<circle class="stroke-teal-500" cx="18" cy="18" fill="none" r="14" stroke-dasharray="85, 100" stroke-linecap="round" stroke-width="4"></circle>
+<circle class="stroke-orange-400" cx="18" cy="18" fill="none" r="14" stroke-dasharray="15, 100" stroke-dashoffset="-85" stroke-linecap="round" stroke-width="4"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<div class="w-16 h-4 bg-blue-900/10 rounded-full flex space-x-1 items-end p-0.5 overflow-hidden">
+<div class="flex-1 bg-blue-500 h-[60%]"></div>
+<div class="flex-1 bg-blue-700 h-[80%]"></div>
+<div class="flex-1 bg-blue-400 h-[40%]"></div>
+<div class="flex-1 bg-blue-600 h-[90%]"></div>
+</div>
+</div>
+</div>
+<!-- Bar Chart Mockup (small) -->
+<div class="flex items-end space-x-1 h-12 mb-8">
+<div class="w-3 bg-blue-200 h-4"></div>
+<div class="w-3 bg-blue-300 h-8"></div>
+<div class="w-3 bg-blue-900 h-10"></div>
+<div class="w-3 bg-blue-600 h-12"></div>
+<div class="w-3 bg-blue-300 h-6"></div>
+<div class="w-3 bg-blue-500 h-11"></div>
+<div class="w-3 bg-blue-200 h-4"></div>
+</div>
+<button class="bg-blue-900 text-white px-6 py-2 rounded-md text-sm font-medium flex items-center justify-center space-x-2 hover:bg-blue-800 transition">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span>Download Result PDF</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- END: ExamResultsSection -->
+</div>
+<!-- END: MainContainer -->
+</body></html>
