@@ -77,7 +77,18 @@ function navLink($currentTab, $linkTab, $label, $icon) {
             <div class="text-[10px] text-blue-300 font-bold uppercase tracking-widest">Main settings</div>
         </div>
     </div>
-    <a href="../api/auth.php?action=logout" class="bg-red-500 hover:bg-red-600 text-white px-6 py-1.5 rounded-md font-bold text-sm transition shadow-sm shadow-red-500/30">Logout</a>
+    <div class="flex items-center space-x-4">
+        <!-- Profile Pill (Top Bar) -->
+        <div class="bg-white/5 border border-white/10 px-4 py-2 rounded-xl flex items-center space-x-3 shadow-inner group hover:bg-white/10 transition-all cursor-default">
+            <div class="w-8 h-8 bg-gradient-to-tr from-indigo-400 to-blue-300 rounded-lg border border-white/20 shadow-md group-hover:rotate-12 transition-transform"></div>
+            <span class="text-xs font-black text-white/90 tracking-tight"><?php echo htmlspecialchars($_SESSION['name']); ?></span>
+        </div>
+        <!-- Compact Premium Logout -->
+        <a href="../api/auth.php?action=logout" class="flex items-center space-x-2 bg-rose-500 hover:bg-rose-600 text-white px-5 py-2.5 rounded-xl font-black text-[10px] uppercase tracking-widest transition-all shadow-lg shadow-rose-900/40 active:scale-95 group">
+            <span>Logout</span>
+            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+        </a>
+    </div>
 </div>
 <div class="bg-white overflow-hidden flex flex-1 relative">
 
@@ -101,12 +112,10 @@ function navLink($currentTab, $linkTab, $label, $icon) {
     <span class="bg-blue-600 w-2 h-8 rounded-full block mr-2"></span>
     <?= str_replace('_', ' ', htmlspecialchars($tab)) ?>
 </h3>
-<div class="flex items-center space-x-4">
-<div class="bg-gray-100 border border-gray-200 px-4 py-2 rounded-full flex items-center space-x-3 shadow-inner">
-<div class="w-8 h-8 bg-gradient-to-tr from-slate-400 to-slate-300 rounded-full border-2 border-white shadow-sm"></div>
-<span class="text-sm font-bold text-gray-700"><?php echo htmlspecialchars($_SESSION['name']); ?></span>
-</div>
-</div>
+    <div class="flex items-center space-x-2 text-[10px] font-black text-slate-600 uppercase tracking-widest bg-slate-50 px-4 py-2 rounded-xl border border-slate-100">
+        <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
+        <span>System Status: Online</span>
+    </div>
 </div>
 
 <?php if(isset($_SESSION['error'])): ?>
@@ -174,7 +183,7 @@ function navLink($currentTab, $linkTab, $label, $icon) {
             <div class="overflow-x-auto">
                 <table class="w-full text-left text-sm whitespace-nowrap">
                     <thead>
-                        <tr class="bg-indigo-50/30 text-indigo-900 uppercase text-[10px] font-black tracking-widest border-b border-indigo-100">
+                        <tr class="bg-indigo-50/30 text-indigo-900 uppercase text-[12px] font-black tracking-widest border-b border-indigo-100">
                             <th class="px-8 py-6">Subject & Title</th>
                             <th class="px-8 py-6 text-center">Registrations</th>
                             <th class="px-8 py-6">Status</th>
@@ -188,14 +197,14 @@ function navLink($currentTab, $linkTab, $label, $icon) {
                             <?php foreach($enrollments as $enr): ?>
                                 <tr class="hover:bg-indigo-50/20 transition-all duration-300 group">
                                     <td class="px-8 py-7">
-                                        <p class="font-black text-slate-900 text-base leading-tight group-hover:text-indigo-600 transition-colors"><?= htmlspecialchars($enr['exam_title']) ?></p>
-                                        <p class="text-[10px] font-black text-slate-700 uppercase tracking-widest mt-1.5"><?= htmlspecialchars($enr['subject']) ?> • <?= date('M d, Y', strtotime($enr['exam_date'])) ?></p>
+                                        <p class="font-black text-slate-900 text-lg leading-tight group-hover:text-indigo-600 transition-colors"><?= htmlspecialchars($enr['exam_title']) ?></p>
+                                        <p class="text-[12px] font-black text-slate-700 uppercase tracking-widest mt-1.5"><?= htmlspecialchars($enr['subject']) ?> • <?= date('M d, Y', strtotime($enr['exam_date'])) ?></p>
                                     </td>
                                     <td class="px-8 py-7 text-center">
-                                        <span class="bg-blue-50 text-blue-700 px-4 py-2.5 rounded-xl text-[11px] font-black border border-blue-100 shadow-sm"><?= $enr['reg_count'] ?></span>
+                                        <span class="bg-blue-50 text-blue-700 px-4 py-2.5 rounded-xl text-[13px] font-black border border-blue-100 shadow-sm"><?= $enr['reg_count'] ?></span>
                                     </td>
                                     <td class="px-8 py-7">
-                                        <span class="px-4 py-1.5 rounded-full text-[9px] font-black tracking-widest uppercase border shadow-sm
+                                        <span class="px-4 py-1.5 rounded-full text-[11px] font-black tracking-widest uppercase border shadow-sm
                                         <?= $enr['status']==='active'?'bg-emerald-50 text-emerald-700 border-emerald-300':($enr['status']==='completed'?'bg-blue-600 text-white border-blue-700':'bg-amber-50 text-amber-700 border-amber-300'); ?>
                                         "><?= $enr['status'] ?></span>
                                     </td>
@@ -394,7 +403,7 @@ function navLink($currentTab, $linkTab, $label, $icon) {
     <div class="overflow-x-auto w-full">
         <table class="w-full text-left text-sm whitespace-nowrap">
             <thead>
-                <tr class="bg-indigo-50/30 text-indigo-900 uppercase text-[10px] font-black tracking-widest border-b border-indigo-100">
+                <tr class="bg-indigo-50/30 text-indigo-900 uppercase text-[12px] font-black tracking-widest border-b border-indigo-100">
                     <th class="px-8 py-6">Candidate Details</th>
                     <th class="px-8 py-6">Examination Identity</th>
                     <th class="px-8 py-6 text-right">Activity Status</th>
@@ -416,28 +425,28 @@ function navLink($currentTab, $linkTab, $label, $icon) {
                                 <?= strtoupper(substr($log['name'],0,1)) ?>
                             </div>
                             <div>
-                                <p class="font-black text-slate-900 text-base leading-tight group-hover:text-indigo-600 transition-colors"><?= htmlspecialchars($log['name']) ?></p>
-                                <p class="text-[10px] font-black text-slate-600 uppercase tracking-widest mt-1">Verified Session</p>
+                                <p class="font-black text-slate-900 text-lg leading-tight group-hover:text-indigo-600 transition-colors"><?= htmlspecialchars($log['name']) ?></p>
+                                <p class="text-[12px] font-black text-slate-600 uppercase tracking-widest mt-1">Verified Session</p>
                             </div>
                         </div>
                     </td>
                     <td class="px-8 py-7">
-                        <p class="font-black text-indigo-700 text-sm leading-tight"><?= htmlspecialchars($log['subject'] ?? '') ?></p>
-                        <p class="text-[10px] font-black text-slate-600 uppercase tracking-widest mt-1"><?= htmlspecialchars($log['title']) ?></p>
+                        <p class="font-black text-indigo-700 text-base leading-tight"><?= htmlspecialchars($log['subject'] ?? '') ?></p>
+                        <p class="text-[12px] font-black text-slate-600 uppercase tracking-widest mt-1"><?= htmlspecialchars($log['title']) ?></p>
                     </td>
                     <td class="px-8 py-7 text-right">
                         <?php if($log['auto_submitted']): ?>
-                            <div class="inline-flex items-center space-x-2 text-rose-700 font-black tracking-widest text-[9px] bg-rose-50 border-2 border-rose-100 px-4 py-1.5 rounded-full uppercase shadow-sm mb-1">
+                            <div class="inline-flex items-center space-x-2 text-rose-700 font-black tracking-widest text-[11px] bg-rose-50 border-2 border-rose-100 px-4 py-1.5 rounded-full uppercase shadow-sm mb-1">
                                 <span class="w-1.5 h-1.5 bg-rose-500 rounded-full animate-pulse"></span>
                                 <span>Cheating Flagged</span>
                             </div>
                         <?php else: ?>
-                            <div class="inline-flex items-center space-x-2 text-emerald-700 font-black tracking-widest text-[9px] bg-emerald-50 border-2 border-emerald-100 px-4 py-1.5 rounded-full uppercase shadow-sm mb-1">
+                            <div class="inline-flex items-center space-x-2 text-emerald-700 font-black tracking-widest text-[11px] bg-emerald-50 border-2 border-emerald-100 px-4 py-1.5 rounded-full uppercase shadow-sm mb-1">
                                 <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span>
                                 <span>Normal Submission</span>
                             </div>
                         <?php endif; ?>
-                        <p class="text-[11px] text-slate-900 font-black tracking-tighter mt-1"><?= date('H:i:s', strtotime($log['submitted_at'])) ?></p>
+                        <p class="text-[13px] text-slate-900 font-black tracking-tighter mt-1"><?= date('H:i:s', strtotime($log['submitted_at'])) ?></p>
                     </td>
                     <td class="px-8 py-7 text-center">
                         <form action="../api/delete_record.php" method="POST" onsubmit="return confirm('Delete this live record?');">
@@ -792,7 +801,7 @@ $total_stu = count($students);
         <div class="overflow-x-auto w-full">
             <table class="w-full text-left text-sm whitespace-nowrap">
                 <thead>
-                    <tr class="bg-indigo-50/30 text-indigo-900 uppercase text-[10px] font-black tracking-widest border-b border-indigo-100">
+                    <tr class="bg-indigo-50/30 text-indigo-900 uppercase text-[12px] font-black tracking-widest border-b border-indigo-100">
                         <th class="px-8 py-6">Student Identity</th>
                         <th class="px-8 py-6">System ID</th>
                         <th class="px-8 py-6">Access Credentials</th>
@@ -812,32 +821,32 @@ $total_stu = count($students);
                                             <?= strtoupper(substr($st['name'],0,1)) ?>
                                         </div>
                                         <div>
-                                            <p class="font-black text-slate-900 text-lg leading-tight tracking-tight group-hover:text-indigo-600 transition-colors"><?= htmlspecialchars($st['name']) ?></p>
+                                            <p class="font-black text-slate-900 text-xl leading-tight tracking-tight group-hover:text-indigo-600 transition-colors"><?= htmlspecialchars($st['name']) ?></p>
                                             <div class="flex items-center space-x-2 mt-1.5">
                                                 <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
-                                                <p class="text-[10px] font-black text-emerald-600 uppercase tracking-widest">Active Member</p>
+                                                <p class="text-[12px] font-black text-emerald-600 uppercase tracking-widest">Active Member</p>
                                             </div>
                                         </div>
                                     </div>
                                 </td>
                                 <td class="px-8 py-7">
                                     <div class="bg-indigo-50 border border-indigo-100 px-4 py-2 rounded-xl inline-flex items-center space-x-2">
-                                        <span class="text-[10px] font-black text-indigo-300 uppercase tracking-tighter">ID:</span>
-                                        <span class="font-mono text-sm font-black text-indigo-600">#<?= str_pad(htmlspecialchars($st['id']), 4, "0", STR_PAD_LEFT) ?></span>
+                                        <span class="text-[12px] font-black text-indigo-300 uppercase tracking-tighter">ID:</span>
+                                        <span class="font-mono text-base font-black text-indigo-600">#<?= str_pad(htmlspecialchars($st['id']), 4, "0", STR_PAD_LEFT) ?></span>
                                     </div>
                                 </td>
                                 <td class="px-8 py-7">
                                     <div class="flex flex-col">
-                                        <div class="flex items-center space-x-2 text-slate-700 font-black text-sm">
+                                        <div class="flex items-center space-x-2 text-slate-700 font-black text-base">
                                             <svg class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                                             <span><?= htmlspecialchars($st['email']) ?></span>
                                         </div>
-                                        <p class="text-[9px] font-black text-indigo-500 uppercase tracking-widest mt-1 ml-6 bg-indigo-50 px-2 py-0.5 rounded inline-block w-fit">Verified Student Account</p>
+                                        <p class="text-[11px] font-black text-indigo-500 uppercase tracking-widest mt-1 ml-6 bg-indigo-50 px-2 py-0.5 rounded inline-block w-fit">Verified Student Account</p>
                                     </div>
                                 </td>
                                 <td class="px-8 py-7 text-right">
-                                    <p class="font-black text-slate-800 text-xs uppercase tracking-widest"><?= date('d M Y', strtotime($st['created_at'])) ?></p>
-                                    <p class="text-[10px] text-indigo-400 font-bold mt-0.5"><?= date('h:i A', strtotime($st['created_at'])) ?></p>
+                                    <p class="font-black text-slate-800 text-sm uppercase tracking-widest"><?= date('d M Y', strtotime($st['created_at'])) ?></p>
+                                    <p class="text-[12px] text-indigo-400 font-bold mt-0.5"><?= date('h:i A', strtotime($st['created_at'])) ?></p>
                                 </td>
                                 <td class="px-8 py-7 text-center">
                                     <form action="../api/delete_record.php" method="POST" onsubmit="return confirm('DANGER: Delete this student?');" onclick="event.stopPropagation()">

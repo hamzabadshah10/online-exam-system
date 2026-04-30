@@ -280,7 +280,7 @@ function navLink($currentTab, $linkTab, $label, $icon) {
             <div class="p-3 bg-indigo-600 text-white rounded-2xl shadow-lg shadow-indigo-100"><?= $icons['exams'] ?></div>
             <div>
                 <h4 class="font-black text-slate-900 text-2xl tracking-tighter uppercase">Upcoming Exams</h4>
-                <p class="text-[11px] font-black text-slate-600 uppercase tracking-widest mt-1">Discover new certification opportunities</p>
+                <p class="text-[11px] font-black text-slate-600 uppercase tracking-widest mt-1">Available Examination Catalog</p>
             </div>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -439,7 +439,7 @@ function navLink($currentTab, $linkTab, $label, $icon) {
             </div>
             <!-- Table Footer Decorative -->
             <div class="bg-indigo-50/20 px-10 py-4 border-t border-indigo-50 flex justify-center">
-                <p class="text-[9px] font-black text-indigo-300 uppercase tracking-[0.4em]">Integrated Secure Examination Channel</p>
+                <p class="text-[9px] font-black text-indigo-300 uppercase tracking-[0.4em]">Integrated Student Portal</p>
             </div>
         </div>
     </section>
@@ -563,84 +563,58 @@ function navLink($currentTab, $linkTab, $label, $icon) {
 </div>
 
 <!-- Enroll Modal -->
-<div id="enrollModal" class="fixed inset-0 z-[100] hidden overflow-y-auto">
-    <div class="fixed inset-0 bg-slate-900/60 backdrop-blur-md transition-opacity duration-500"></div>
-    <div class="flex items-center justify-center min-h-screen p-6 relative">
-        <div class="bg-white rounded-[3rem] shadow-[0_32px_64px_-12px_rgba(0,0,0,0.14)] w-full max-w-xl border border-white relative animate-in zoom-in-95 fade-in duration-500 overflow-hidden">
-            <!-- Decorative Top Bar -->
-            <div class="h-3 bg-gradient-to-r from-indigo-600 via-blue-500 to-indigo-600"></div>
+<div id="enrollModal" class="fixed inset-0 z-[100] bg-slate-900/40 backdrop-blur-sm hidden items-center justify-center p-4 flex drop-shadow-2xl">
+    <form action="../api/exam_manager.php" method="POST" class="bg-white rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] w-full max-w-[450px] overflow-hidden border border-gray-200 transform scale-100 transition-all">
+        <input type="hidden" name="action" value="enroll">
+        <input type="hidden" name="exam_id" id="m-exam-id">
+        
+        <div class="bg-brand-sidebar text-white px-6 py-4 flex justify-between items-center border-b border-slate-700/50">
+            <h3 class="text-md font-bold tracking-wider flex items-center space-x-2">
+                <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                <span>Enroll in Exam</span>
+            </h3>
+            <button type="button" class="text-slate-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 p-1 rounded-md" onclick="closeEnrollModal()">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+            </button>
+        </div>
+
+        <div class="p-8 space-y-6 bg-gray-50/50">
+            <!-- Target Exam Display -->
+            <div class="bg-indigo-50 border border-indigo-100 p-4 rounded-xl">
+                <p class="text-[10px] font-black text-indigo-400 uppercase tracking-widest mb-1">Target Examination</p>
+                <p class="text-lg font-black text-slate-900 leading-tight" id="m-exam-title">---</p>
+            </div>
+
+            <div>
+                <label class="text-[11px] tracking-widest uppercase font-black text-slate-700 mb-2 block">Registration Identity:</label>
+                <input type="text" name="reg_number" required class="w-full border-gray-300 rounded-lg text-sm p-3 bg-white shadow-inner font-semibold text-gray-800 focus:ring-blue-500 focus:border-blue-500 transition-all" placeholder="e.g. B23F0352SE016">
+            </div>
             
-            <div class="p-10">
-                <!-- Header Section -->
-                <div class="flex items-center space-x-6 mb-10">
-                    <div class="p-4 bg-indigo-600 text-white rounded-2xl shadow-xl shadow-indigo-100">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
-                    </div>
-                    <div>
-                        <h3 class="text-3xl font-black text-slate-900 tracking-tighter uppercase leading-tight">Enroll in Exam</h3>
-                        <p class="text-[11px] font-black text-indigo-400 uppercase tracking-[0.25em] mt-1">Official Registration Protocol</p>
+            <div>
+                <label class="text-[11px] tracking-widest uppercase font-black text-slate-700 mb-2 block">Department:</label>
+                <input type="text" name="department" required class="w-full border-gray-300 rounded-lg text-sm p-3 bg-white shadow-inner font-semibold text-gray-800 focus:ring-blue-500 focus:border-blue-500 transition-all" placeholder="IT & CS">
+            </div>
+            
+            <div>
+                <label class="text-[11px] tracking-widest uppercase font-black text-slate-700 mb-2 block">Academic Program:</label>
+                <div class="relative">
+                    <select name="program" class="w-full border-gray-300 rounded-lg text-sm p-3 bg-white shadow-inner font-semibold text-gray-800 focus:ring-blue-500 focus:border-blue-500 transition-all cursor-pointer appearance-none">
+                        <option value="Software Engineering">Software Engineering</option>
+                        <option value="Computer Science">Computer Science</option>
+                        <option value="Information Technology">Information Technology</option>
+                    </select>
+                    <div class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </div>
                 </div>
-
-                <form action="../api/exam_manager.php" method="POST" class="space-y-8">
-                    <input type="hidden" name="action" value="enroll">
-                    <input type="hidden" name="exam_id" id="m-exam-id">
-
-                    <!-- Target Exam Info -->
-                    <div class="bg-indigo-50/50 border-2 border-indigo-100 p-8 rounded-[2.5rem] relative overflow-hidden group">
-                        <div class="absolute top-0 right-0 p-6 opacity-5 group-hover:scale-110 transition-transform duration-700">
-                            <svg class="w-20 h-20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
-                        </div>
-                        <p class="text-[10px] font-black text-indigo-500 uppercase tracking-[0.3em] mb-2">Target Examination</p>
-                        <p class="text-2xl font-black text-slate-900 leading-tight tracking-tight uppercase" id="m-exam-title">---</p>
-                    </div>
-                    
-                    <!-- Form Fields -->
-                    <div class="space-y-6">
-                        <div>
-                            <label class="text-[10px] tracking-[0.3em] uppercase font-black text-slate-600 mb-3 block">Registration Identity</label>
-                            <input type="text" name="reg_number" required class="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl text-sm p-5 font-black text-slate-900 focus:ring-4 focus:ring-indigo-100 focus:border-indigo-600 transition-all outline-none placeholder:text-slate-400 shadow-inner" placeholder="e.g. B23F0352SE016">
-                        </div>
-                        
-                        <div class="grid grid-cols-2 gap-6">
-                            <div>
-                                <label class="text-[10px] tracking-[0.3em] uppercase font-black text-slate-600 mb-3 block">Department</label>
-                                <input type="text" name="department" required class="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl text-sm p-5 font-black text-slate-900 focus:ring-4 focus:ring-indigo-100 focus:border-indigo-600 transition-all outline-none placeholder:text-slate-400 shadow-inner" placeholder="IT & CS">
-                            </div>
-                            <div>
-                                <label class="text-[10px] tracking-[0.3em] uppercase font-black text-slate-600 mb-3 block">Academic Program</label>
-                                <div class="relative">
-                                    <select name="program" class="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl text-sm p-5 font-black text-slate-900 focus:ring-4 focus:ring-indigo-100 focus:border-indigo-600 transition-all outline-none appearance-none shadow-inner cursor-pointer">
-                                        <option value="Software Engineering">Software Engineering</option>
-                                        <option value="Computer Science">Computer Science</option>
-                                        <option value="Information Technology">Information Technology</option>
-                                    </select>
-                                    <div class="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-slate-600">
-                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Actions -->
-                    <div class="pt-6 space-y-4">
-                        <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-6 rounded-2xl text-xs font-black uppercase tracking-[0.3em] shadow-2xl shadow-indigo-100 transition-all hover:-translate-y-1 active:scale-[0.98] flex items-center justify-center space-x-3 group relative overflow-hidden">
-                            <div class="absolute inset-0 bg-white/10 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
-                            <span class="relative z-10">Confirm Enrollment</span>
-                            <svg class="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                        </button>
-                        <button type="button" onclick="closeEnrollModal()" class="w-full bg-white text-slate-600 hover:text-slate-600 py-4 rounded-2xl text-[10px] font-black uppercase tracking-[0.4em] transition-colors">Dismiss Registration</button>
-                    </div>
-                </form>
-            </div>
-            
-            <!-- Footer Visual -->
-            <div class="bg-indigo-50/30 py-5 text-center border-t border-indigo-50">
-                <p class="text-[9px] font-black text-indigo-300 uppercase tracking-[0.4em]">Integrated Academic Security Protocol • V3.1</p>
             </div>
         </div>
-    </div>
+
+        <div class="p-5 bg-white flex justify-end space-x-3 border-t border-gray-200 shadow-inner">
+            <button type="button" class="px-5 py-2.5 border border-gray-300 text-gray-600 rounded-lg text-sm bg-gray-50 hover:bg-gray-100 hover:text-gray-800 font-bold tracking-wide transition-all shadow-sm" onclick="closeEnrollModal()">Cancel</button>
+            <button type="submit" class="px-6 py-2.5 bg-indigo-600 text-white rounded-lg text-sm hover:bg-indigo-700 font-black tracking-widest uppercase shadow-lg shadow-indigo-200 hover:-translate-y-0.5 transition-all">Confirm Enrollment</button>
+        </div>
+    </form>
 </div>
 <script>
     document.getElementById('enrollModal').classList.add('flex');
