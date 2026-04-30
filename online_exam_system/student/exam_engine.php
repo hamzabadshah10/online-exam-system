@@ -170,8 +170,8 @@ $questions = $stmt_q->fetchAll(PDO::FETCH_ASSOC);
                                     <?php foreach(['A'=>$q['option_a'], 'B'=>$q['option_b'], 'C'=>$q['option_c'], 'D'=>$q['option_d']] as $opt_key => $opt_val): ?>
                                     <label class="group relative flex items-center p-6 border-2 border-gray-100 rounded-2xl cursor-pointer hover:border-blue-500 hover:bg-blue-50/30 transition-all duration-300" onclick="markQNav(<?= $index ?>)">
                                         <input class="hidden peer" name="q_<?= $q['id'] ?>" value="<?= $opt_key ?>" type="radio"/>
-                                        <div class="w-6 h-6 border-2 border-gray-300 rounded-full flex items-center justify-center peer-checked:border-blue-600 peer-checked:bg-blue-600 transition-all group-hover:scale-110">
-                                            <div class="w-2 h-2 bg-white rounded-full opacity-0 peer-checked:opacity-100"></div>
+                                        <div class="w-8 h-8 border-2 border-gray-300 rounded-full flex items-center justify-center peer-checked:border-blue-600 peer-checked:bg-blue-600 transition-all group-hover:scale-110 text-[11px] font-black text-slate-400 peer-checked:text-white shadow-sm shrink-0">
+                                            <?= $opt_key ?>
                                         </div>
                                         <span class="ml-4 text-lg font-bold text-slate-600 peer-checked:text-blue-700 transition-colors"><?= htmlspecialchars($opt_val) ?></span>
                                     </label>

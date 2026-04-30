@@ -294,28 +294,28 @@ function navLink($currentTab, $linkTab, $label, $icon) {
                 </div>
             <?php else: ?>
                 <?php foreach($exams as $ex): ?>
-                    <div class="bg-white p-8 rounded-[2.5rem] shadow-xl shadow-slate-200/40 border border-gray-100 hover:shadow-2xl hover:shadow-indigo-100/50 transition-all duration-500 flex flex-col group relative overflow-hidden">
+                    <div class="bg-blue-50 p-8 rounded-[2.5rem] shadow-[0_0_50px_rgba(59,130,246,0.2)] border-2 border-blue-200 hover:bg-white hover:border-indigo-400 hover:shadow-[0_0_60px_rgba(79,70,229,0.4)] transition-all duration-500 flex flex-col group relative overflow-hidden">
                         <!-- Decorative Background Element -->
                         <div class="absolute -right-10 -top-10 w-32 h-32 bg-indigo-50 rounded-full opacity-50 group-hover:scale-150 transition-transform duration-700"></div>
                         
                         <div class="mb-6 relative z-10">
                             <span class="text-[10px] font-black text-indigo-600 uppercase tracking-[0.2em] bg-indigo-50 border-2 border-indigo-100 px-3 py-1 rounded-full mb-4 inline-block shadow-sm"><?= htmlspecialchars($ex['subject']); ?></span>
-                            <h3 class="font-black text-slate-900 text-2xl leading-tight tracking-tight group-hover:text-indigo-600 transition-colors h-20 overflow-hidden line-clamp-3"><?= htmlspecialchars($ex['title']); ?></h3>
-                            <div class="flex items-center text-slate-600 space-x-2 mt-4">
-                                <svg class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                                <span class="text-[12px] font-black uppercase tracking-widest text-slate-600"><?= date("M d, Y", strtotime($ex['exam_date'])); ?></span>
+                            <h3 class="font-black text-slate-900 text-xl leading-tight tracking-tight group-hover:text-indigo-600 transition-colors h-16 overflow-hidden line-clamp-2 bg-white border border-blue-100 px-4 py-3 rounded-2xl shadow-sm mb-4"><?= htmlspecialchars($ex['title']); ?></h3>
+                            <div class="flex items-center text-slate-600 space-x-3 bg-white border border-blue-100 px-4 py-3 rounded-2xl shadow-sm">
+                                <svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                <span class="text-[12px] font-black uppercase tracking-widest text-indigo-900"><?= date("M d, Y", strtotime($ex['exam_date'])); ?></span>
                             </div>
                         </div>
 
                         <!-- Info Strip -->
                         <div class="grid grid-cols-2 gap-4 py-6 border-t border-gray-50 text-xs font-black text-slate-700 relative z-10">
-                            <div class="flex items-center space-x-3 bg-slate-50/50 p-2.5 rounded-xl border border-slate-100">
+                            <div class="flex items-center space-x-3 bg-white border-2 border-blue-100 p-3 rounded-2xl shadow-sm">
                                 <svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                <span><?= date('h:i A', strtotime($ex['start_time'])); ?></span>
+                                <span class="text-slate-800"><?= date('h:i A', strtotime($ex['start_time'])); ?></span>
                             </div>
-                            <div class="flex items-center space-x-3 bg-slate-50/50 p-2.5 rounded-xl border border-slate-100">
+                            <div class="flex items-center space-x-3 bg-white border-2 border-blue-100 p-3 rounded-2xl shadow-sm">
                                 <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                                <span><?= $ex['duration_minutes']; ?> Min</span>
+                                <span class="text-slate-800"><?= $ex['duration_minutes']; ?> Min</span>
                             </div>
                         </div>
 
@@ -356,10 +356,10 @@ function navLink($currentTab, $linkTab, $label, $icon) {
             <div class="overflow-x-auto w-full">
                 <table class="w-full text-left text-sm whitespace-nowrap">
                     <thead>
-                        <tr class="bg-indigo-50/30 text-indigo-900 uppercase text-[11px] font-black tracking-[0.25em] border-b border-indigo-100">
-                            <th class="px-10 py-6">Examination Identity</th>
-                            <th class="px-10 py-6 text-center">Current Status</th>
-                            <th class="px-10 py-6 text-center">Operations</th>
+                        <tr class="bg-indigo-600 text-white uppercase text-[13px] font-black tracking-[0.25em] shadow-lg">
+                            <th class="px-10 py-7 rounded-tl-2xl">Examination Identity</th>
+                            <th class="px-10 py-7 text-center">Current Status</th>
+                            <th class="px-10 py-7 text-center rounded-tr-2xl">Operations</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-50 bg-white">
@@ -386,7 +386,7 @@ function navLink($currentTab, $linkTab, $label, $icon) {
                                             <div>
                                                 <p class="font-black text-slate-900 text-lg leading-tight tracking-tight group-hover:text-indigo-600 transition-colors"><?= htmlspecialchars($en['title']) ?></p>
                                                 <div class="flex items-center space-x-3 mt-2">
-                                                    <span class="flex items-center text-[10px] font-black text-slate-600 uppercase tracking-widest">
+                                                    <span class="flex items-center text-[12px] font-black text-slate-600 uppercase tracking-widest">
                                                         <svg class="w-3.5 h-3.5 mr-1.5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                                                         Registered: <?= date("d M Y", strtotime($en['exam_date'])) ?>
                                                     </span>
@@ -401,7 +401,7 @@ function navLink($currentTab, $linkTab, $label, $icon) {
                                                 <span>Completed</span>
                                             </div>
                                         <?php else: ?>
-                                            <div class="inline-flex items-center space-x-2 bg-emerald-50 text-emerald-700 border-2 border-emerald-100 px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-[0.15em] shadow-sm">
+                                            <div class="inline-flex items-center space-x-2 bg-emerald-50 text-emerald-700 border-2 border-emerald-100 px-6 py-2.5 rounded-full text-[12px] font-black uppercase tracking-[0.15em] shadow-sm">
                                                 <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
                                                 <span>Enrolled</span>
                                             </div>
@@ -410,10 +410,10 @@ function navLink($currentTab, $linkTab, $label, $icon) {
                                     <td class="px-10 py-8 text-center">
                                         <div class="flex items-center justify-center space-x-4">
                                             <?php if (!$en['result_status']): ?>
-                                                <a href="exam_engine.php?exam_id=<?= $en['exam_id'] ?>" class="group/btn relative inline-flex items-center space-x-3 bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-2xl text-xs font-black uppercase tracking-widest shadow-xl shadow-indigo-100 hover:shadow-indigo-200 transition-all hover:-translate-y-1 active:scale-95 overflow-hidden">
+                                                <a href="exam_engine.php?exam_id=<?= $en['exam_id'] ?>" class="group/btn relative inline-flex items-center space-x-3 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-2xl text-xs font-black uppercase tracking-widest shadow-xl shadow-blue-100 hover:shadow-blue-200 transition-all hover:-translate-y-1 active:scale-95 overflow-hidden">
                                                     <div class="absolute inset-0 bg-white/10 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700"></div>
                                                     <svg class="w-4 h-4 relative z-10" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
-                                                    <span class="relative z-10">Launch Exam</span>
+                                                    <span class="relative z-10">Start Exam</span>
                                                 </a>
                                             <?php else: ?>
                                                 <div class="inline-flex items-center space-x-3 text-emerald-800 font-black text-[11px] uppercase tracking-[0.2em] bg-emerald-50/80 py-4 px-8 rounded-2xl border-2 border-emerald-100 shadow-sm">
@@ -437,10 +437,7 @@ function navLink($currentTab, $linkTab, $label, $icon) {
                     </tbody>
                 </table>
             </div>
-            <!-- Table Footer Decorative -->
-            <div class="bg-indigo-50/20 px-10 py-4 border-t border-indigo-50 flex justify-center">
-                <p class="text-[9px] font-black text-indigo-300 uppercase tracking-[0.4em]">Integrated Student Portal</p>
-            </div>
+
         </div>
     </section>
     <?php endif; ?>

@@ -94,32 +94,32 @@ $res_icons = [
 
 <div class="flex min-h-screen">
     <!-- Sidebar -->
-    <aside class="fixed left-0 top-0 h-screen w-80 bg-white border-r border-gray-100 z-50 transition-all duration-500 overflow-y-auto hidden lg:block">
+    <aside class="fixed left-0 top-0 h-screen w-80 bg-indigo-950 border-r border-white/5 z-50 transition-all duration-500 overflow-y-auto hidden lg:block shadow-2xl">
         <div class="p-10">
             <div class="flex items-center space-x-4 mb-14 group">
-                <div class="p-4 bg-indigo-600 rounded-2xl shadow-xl shadow-indigo-100 text-white transform group-hover:rotate-12 transition-transform duration-500">
+                <div class="p-4 bg-blue-600 rounded-2xl shadow-xl shadow-blue-900/20 text-white transform group-hover:rotate-12 transition-transform duration-500">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0012 18.75c-1.03 0-1.9-.4-2.59-1.177L8.863 17z"></path></svg>
                 </div>
                 <div>
-                    <h1 class="text-2xl font-black tracking-tighter uppercase text-slate-900">EduQuest</h1>
-                    <p class="text-[10px] font-black text-indigo-400 uppercase tracking-[0.3em]">Student Portal</p>
+                    <h1 class="text-2xl font-black tracking-tighter uppercase text-white">EduQuest</h1>
+                    <p class="text-[10px] font-black text-blue-400 uppercase tracking-[0.3em]">Student Portal</p>
                 </div>
             </div>
 
             <nav class="space-y-3">
-                <a href="dashboard.php?tab=dashboard" class="flex items-center space-x-4 p-5 rounded-2xl text-slate-600 hover:bg-indigo-50 hover:text-indigo-600 transition-all duration-300 font-black text-xs uppercase tracking-widest group">
+                <a href="dashboard.php?tab=dashboard" class="flex items-center space-x-4 p-5 rounded-2xl text-white hover:bg-white/10 transition-all duration-300 font-black text-xs uppercase tracking-widest group">
                     <span class="group-hover:scale-110 transition-transform"><?= $icons['dashboard'] ?></span>
                     <span>Dashboard</span>
                 </a>
-                <a href="dashboard.php?tab=available_exams" class="flex items-center space-x-4 p-5 rounded-2xl text-slate-600 hover:bg-indigo-50 hover:text-indigo-600 transition-all duration-300 font-black text-xs uppercase tracking-widest group">
+                <a href="dashboard.php?tab=available_exams" class="flex items-center space-x-4 p-5 rounded-2xl text-white hover:bg-white/10 transition-all duration-300 font-black text-xs uppercase tracking-widest group">
                     <span class="group-hover:scale-110 transition-transform"><?= $icons['exams'] ?></span>
                     <span>Browse Exams</span>
                 </a>
-                <a href="dashboard.php?tab=my_enrollments" class="flex items-center space-x-4 p-5 rounded-2xl text-slate-600 hover:bg-indigo-50 hover:text-indigo-600 transition-all duration-300 font-black text-xs uppercase tracking-widest group">
+                <a href="dashboard.php?tab=my_enrollments" class="flex items-center space-x-4 p-5 rounded-2xl text-white hover:bg-white/10 transition-all duration-300 font-black text-xs uppercase tracking-widest group">
                     <span class="group-hover:scale-110 transition-transform"><?= $icons['enrollments'] ?></span>
                     <span>Enrollments</span>
                 </a>
-                <a href="dashboard.php?tab=exam_results" class="flex items-center space-x-4 p-5 rounded-2xl bg-indigo-600 text-white shadow-2xl shadow-indigo-100 font-black text-xs uppercase tracking-widest transition-all duration-300 group">
+                <a href="dashboard.php?tab=exam_results" class="flex items-center space-x-4 p-5 rounded-2xl bg-blue-600 text-white shadow-2xl shadow-blue-900/50 font-black text-xs uppercase tracking-widest transition-all duration-300 group">
                     <span class="group-hover:rotate-12 transition-transform"><?= $icons['results'] ?></span>
                     <span>Analytics</span>
                 </a>
@@ -143,7 +143,7 @@ $res_icons = [
                     <h2 class="text-4xl font-black text-slate-900 tracking-tighter uppercase leading-none"><?= htmlspecialchars($result_data['title']) ?></h2>
                     <p class="text-[11px] font-black text-indigo-400 uppercase tracking-[0.3em] mt-3 flex items-center">
                         <span class="w-2 h-2 bg-indigo-500 rounded-full mr-2"></span>
-                        Performance Intelligence Engine
+                        Performance Overview
                     </p>
                 </div>
             </div>
@@ -170,32 +170,36 @@ $res_icons = [
 
         <!-- Metrics Grid -->
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-14">
-            <div class="bg-white p-10 rounded-[2.5rem] shadow-2xl shadow-slate-200/50 border border-gray-100 flex flex-col relative overflow-hidden group hover:-translate-y-2 transition-all duration-500">
-                <div class="p-4 bg-indigo-50 text-indigo-600 rounded-2xl w-fit mb-6 group-hover:bg-indigo-600 group-hover:text-white transition-colors duration-500"><?= $res_icons['score'] ?></div>
-                <p class="text-5xl font-black text-slate-900 tracking-tighter"><?= $pct ?>%</p>
-                <p class="text-[11px] font-black text-slate-600 uppercase tracking-[0.2em] mt-2">Aggregate Score</p>
-                <div class="absolute -right-8 -bottom-8 p-12 opacity-5 scale-150 rotate-12 group-hover:rotate-0 transition-transform duration-700">
+            <div class="bg-blue-50/50 p-10 rounded-[2.5rem] shadow-xl shadow-blue-100/50 border-2 border-blue-100/50 flex flex-col relative overflow-hidden group hover:-translate-y-2 transition-all duration-500">
+                <div class="p-4 bg-blue-600 text-white rounded-2xl w-fit mb-6 shadow-lg shadow-blue-200"><?= $res_icons['score'] ?></div>
+                <p class="text-5xl font-black text-blue-700 tracking-tighter group-hover:scale-110 transition-transform origin-left duration-500"><?= $pct ?>%</p>
+                <p class="text-[11px] font-black text-blue-400 uppercase tracking-[0.2em] mt-2">Total Score</p>
+                <div class="absolute -right-8 -bottom-8 p-12 opacity-[0.03] scale-150 rotate-12 group-hover:rotate-0 transition-transform duration-700 text-blue-900">
                     <svg class="w-24 h-24" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
                 </div>
             </div>
 
-            <div class="bg-white p-10 rounded-[2.5rem] shadow-2xl shadow-slate-200/50 border border-gray-100 flex flex-col relative overflow-hidden group hover:-translate-y-2 transition-all duration-500">
-                <?php $isPass = ($result_data['status'] === 'Pass'); ?>
-                <div class="p-4 <?= $isPass ? 'bg-emerald-50 text-emerald-600' : 'bg-rose-50 text-rose-500' ?> rounded-2xl w-fit mb-6 group-hover:text-white transition-colors duration-500 <?= $isPass ? 'group-hover:bg-emerald-600' : 'group-hover:bg-rose-600' ?>"><?= $res_icons['status'] ?></div>
-                <p class="text-5xl font-black text-slate-900 tracking-tighter"><?= $result_data['status'] ?></p>
-                <p class="text-[11px] font-black text-slate-600 uppercase tracking-[0.2em] mt-2">Proficiency Status</p>
+            <?php 
+                $isPass = ($result_data['status'] === 'Pass');
+                $statusBg = $isPass ? 'bg-emerald-50/50 border-emerald-100/50 shadow-emerald-100/50 text-emerald-700' : 'bg-rose-50/50 border-rose-100/50 shadow-rose-100/50 text-rose-600';
+                $statusIcon = $isPass ? 'bg-emerald-500' : 'bg-rose-500';
+            ?>
+            <div class="<?= $statusBg ?> p-10 rounded-[2.5rem] shadow-xl border-2 flex flex-col relative overflow-hidden group hover:-translate-y-2 transition-all duration-500">
+                <div class="p-4 <?= $statusIcon ?> text-white rounded-2xl w-fit mb-6 shadow-lg"><?= $res_icons['status'] ?></div>
+                <p class="text-5xl font-black tracking-tighter group-hover:scale-110 transition-transform origin-left duration-500"><?= $result_data['status'] ?></p>
+                <p class="text-[11px] font-black opacity-60 uppercase tracking-[0.2em] mt-2">Pass / Fail Status</p>
             </div>
 
-            <div class="bg-white p-10 rounded-[2.5rem] shadow-2xl shadow-slate-200/50 border border-gray-100 flex flex-col relative overflow-hidden group hover:-translate-y-2 transition-all duration-500">
-                <div class="p-4 bg-blue-50 text-blue-600 rounded-2xl w-fit mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-500"><?= $res_icons['rank'] ?></div>
-                <p class="text-5xl font-black text-slate-900 tracking-tighter">#<?= $rank ?></p>
-                <p class="text-[11px] font-black text-slate-600 uppercase tracking-[0.2em] mt-2">Class Percentile</p>
+            <div class="bg-indigo-50/50 p-10 rounded-[2.5rem] shadow-xl shadow-indigo-100/50 border-2 border-indigo-100/50 flex flex-col relative overflow-hidden group hover:-translate-y-2 transition-all duration-500">
+                <div class="p-4 bg-indigo-600 text-white rounded-2xl w-fit mb-6 shadow-lg shadow-indigo-200"><?= $res_icons['rank'] ?></div>
+                <p class="text-5xl font-black text-indigo-700 tracking-tighter group-hover:scale-110 transition-transform origin-left duration-500">#<?= $rank ?></p>
+                <p class="text-[11px] font-black text-indigo-400 uppercase tracking-[0.2em] mt-2">Class Rank</p>
             </div>
 
-            <div class="bg-white p-10 rounded-[2.5rem] shadow-2xl shadow-slate-200/50 border border-gray-100 flex flex-col relative overflow-hidden group hover:-translate-y-2 transition-all duration-500">
-                <div class="p-4 bg-slate-50 text-slate-600 rounded-2xl w-fit mb-6 group-hover:bg-slate-900 group-hover:text-white transition-colors duration-500"><?= $res_icons['marks'] ?></div>
-                <p class="text-5xl font-black text-slate-900 tracking-tighter"><?= (int)$result_data['total_score'] ?></p>
-                <p class="text-[11px] font-black text-slate-600 uppercase tracking-[0.2em] mt-2">Raw Marks (<?= (int)$result_data['total_marks'] ?>)</p>
+            <div class="bg-orange-50/50 p-10 rounded-[2.5rem] shadow-xl shadow-orange-100/50 border-2 border-orange-100/50 flex flex-col relative overflow-hidden group hover:-translate-y-2 transition-all duration-500">
+                <div class="p-4 bg-orange-500 text-white rounded-2xl w-fit mb-6 shadow-lg shadow-orange-200"><?= $res_icons['marks'] ?></div>
+                <p class="text-5xl font-black text-orange-700 tracking-tighter group-hover:scale-110 transition-transform origin-left duration-500"><?= (int)$result_data['total_score'] ?></p>
+                <p class="text-[11px] font-black text-orange-400 uppercase tracking-[0.2em] mt-2">Marks Obtained (<?= (int)$result_data['total_marks'] ?>)</p>
             </div>
         </div>
 
@@ -203,28 +207,28 @@ $res_icons = [
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 mb-14">
             <!-- Breakdown Grid -->
             <div class="lg:col-span-1 space-y-8">
-                <div class="bg-gradient-to-br from-emerald-600 to-teal-500 p-10 rounded-[2.5rem] shadow-2xl shadow-emerald-100 text-white relative overflow-hidden group">
-                    <div class="absolute -right-6 -top-6 p-12 opacity-10 group-hover:scale-125 transition-transform duration-700"><?= $res_icons['status'] ?></div>
+                <div class="bg-gradient-to-br from-emerald-600 to-teal-500 p-6 rounded-3xl shadow-xl shadow-emerald-100 text-white relative overflow-hidden group">
+                    <div class="absolute -right-4 -top-4 p-8 opacity-10 group-hover:scale-125 transition-transform duration-700"><?= $res_icons['status'] ?></div>
                     <div class="relative z-10">
-                        <p class="text-[11px] font-black uppercase tracking-[0.3em] opacity-80 mb-3">Accuracy Benchmark</p>
-                        <p class="text-6xl font-black mb-2"><?= $total_correct ?></p>
-                        <p class="text-sm font-black uppercase tracking-widest opacity-90">Validated Correct</p>
+                        <p class="text-[10px] font-black uppercase tracking-[0.2em] opacity-80 mb-2">Correct Answers</p>
+                        <p class="text-4xl font-black mb-1"><?= $total_correct ?></p>
+                        <p class="text-[10px] font-black uppercase tracking-widest opacity-90">Total Correct</p>
                     </div>
                 </div>
-                <div class="bg-gradient-to-br from-rose-600 to-pink-500 p-10 rounded-[2.5rem] shadow-2xl shadow-rose-100 text-white relative overflow-hidden group">
-                    <div class="absolute -right-6 -top-6 p-12 opacity-10 group-hover:scale-125 transition-transform duration-700"><?= $res_icons['marks'] ?></div>
+                <div class="bg-gradient-to-br from-rose-600 to-pink-500 p-6 rounded-3xl shadow-xl shadow-rose-100 text-white relative overflow-hidden group">
+                    <div class="absolute -right-4 -top-4 p-8 opacity-10 group-hover:scale-125 transition-transform duration-700"><?= $res_icons['marks'] ?></div>
                     <div class="relative z-10">
-                        <p class="text-[11px] font-black uppercase tracking-[0.3em] opacity-80 mb-3">Error Margin</p>
-                        <p class="text-6xl font-black mb-2"><?= $total_wrong ?></p>
-                        <p class="text-sm font-black uppercase tracking-widest opacity-90">Incorrect Entries</p>
+                        <p class="text-[10px] font-black uppercase tracking-[0.2em] opacity-80 mb-2">Wrong Answers</p>
+                        <p class="text-4xl font-black mb-1"><?= $total_wrong ?></p>
+                        <p class="text-[10px] font-black uppercase tracking-widest opacity-90">Total Incorrect</p>
                     </div>
                 </div>
-                <div class="bg-gradient-to-br from-slate-900 to-slate-700 p-10 rounded-[2.5rem] shadow-2xl shadow-slate-200 text-white relative overflow-hidden group">
-                    <div class="absolute -right-6 -top-6 p-12 opacity-10 group-hover:scale-125 transition-transform duration-700"><?= $res_icons['score'] ?></div>
+                <div class="bg-gradient-to-br from-slate-900 to-slate-700 p-6 rounded-3xl shadow-xl shadow-slate-200 text-white relative overflow-hidden group">
+                    <div class="absolute -right-4 -top-4 p-8 opacity-10 group-hover:scale-125 transition-transform duration-700"><?= $res_icons['score'] ?></div>
                     <div class="relative z-10">
-                        <p class="text-[11px] font-black uppercase tracking-[0.3em] opacity-80 mb-3">Neutral Space</p>
-                        <p class="text-6xl font-black mb-2"><?= $total_skipped ?></p>
-                        <p class="text-sm font-black uppercase tracking-widest opacity-90">Omitted Responses</p>
+                        <p class="text-[10px] font-black uppercase tracking-[0.2em] opacity-80 mb-2">Skipped Questions</p>
+                        <p class="text-4xl font-black mb-1"><?= $total_skipped ?></p>
+                        <p class="text-[10px] font-black uppercase tracking-widest opacity-90">Not Answered</p>
                     </div>
                 </div>
             </div>
@@ -232,18 +236,23 @@ $res_icons = [
             <!-- Detailed Table -->
             <div class="lg:col-span-2">
                 <div class="bg-white rounded-[3rem] shadow-2xl shadow-slate-200/50 border border-gray-100 overflow-hidden h-full flex flex-col">
-                    <div class="px-10 py-10 border-b border-indigo-50 bg-white flex justify-between items-center">
-                        <div class="flex items-center space-x-5">
-                            <div class="p-4 bg-indigo-50 text-indigo-600 rounded-2xl">
+                    <div class="px-10 py-10 bg-gradient-to-r from-blue-600 to-indigo-700 text-white flex justify-between items-center shadow-lg relative overflow-hidden">
+                        <!-- Decorative Header Pattern -->
+                        <div class="absolute right-0 top-0 opacity-10 translate-x-1/4 -translate-y-1/4">
+                            <svg class="w-64 h-64" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                        </div>
+                        
+                        <div class="flex items-center space-x-5 relative z-10">
+                            <div class="p-4 bg-white/20 backdrop-blur-md text-white rounded-2xl border border-white/30 shadow-inner">
                                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
                             </div>
                             <div>
-                                <h4 class="font-black text-slate-900 text-2xl tracking-tighter uppercase">Deep Scan Analysis</h4>
-                                <p class="text-[11px] font-black text-indigo-400 uppercase tracking-[0.2em] mt-1">Granular Question Data</p>
+                                <h4 class="font-black text-white text-2xl tracking-tighter uppercase">Answer Review</h4>
+                                <p class="text-[11px] font-black text-blue-200 uppercase tracking-[0.2em] mt-1">Detailed Question Breakdown</p>
                             </div>
                         </div>
-                        <div class="bg-indigo-50/50 border border-indigo-100 px-6 py-3 rounded-2xl text-[11px] font-black text-indigo-600 uppercase tracking-widest">
-                            <?= count($questions) ?> Data Points
+                        <div class="bg-white/20 backdrop-blur-md border border-white/30 px-6 py-3 rounded-2xl text-[11px] font-black text-white uppercase tracking-widest relative z-10 shadow-lg">
+                            <?= count($questions) ?> Total Questions
                         </div>
                     </div>
                     <div class="overflow-x-auto flex-1 no-scrollbar">
@@ -251,8 +260,8 @@ $res_icons = [
                             <thead>
                                 <tr class="bg-indigo-50/30 text-indigo-900 uppercase text-[11px] font-black tracking-[0.25em] border-b border-indigo-100">
                                     <th class="px-10 py-6">Index</th>
-                                    <th class="px-10 py-6">Intelligence Query</th>
-                                    <th class="px-10 py-6 text-center">Protocol Output</th>
+                                    <th class="px-10 py-6">Question Details</th>
+                                    <th class="px-10 py-6 text-center">Your Result</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-50 bg-white">
@@ -271,8 +280,8 @@ $res_icons = [
                                         <div class="flex flex-col max-w-xl">
                                             <p class="font-black text-slate-900 text-base leading-snug tracking-tight mb-2 group-hover:text-indigo-600 transition-colors"><?= htmlspecialchars($q['question_text']) ?></p>
                                             <div class="flex items-center space-x-4">
-                                                <span class="text-[10px] font-black text-slate-600 uppercase tracking-widest bg-slate-50 px-3 py-1 rounded-md border border-slate-100">Answer: <span class="text-slate-900 ml-1"><?= $ans ?: 'N/A' ?></span></span>
-                                                <span class="text-[10px] font-black text-emerald-500 uppercase tracking-widest bg-emerald-50 px-3 py-1 rounded-md border border-emerald-100">Target: <span class="ml-1"><?= $q['correct_option'] ?></span></span>
+                                                <span class="text-[10px] font-black text-blue-600 uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-md border border-blue-100 shadow-[0_0_15px_rgba(59,130,246,0.2)] group-hover:shadow-[0_0_25px_rgba(59,130,246,0.4)] transition-all">Attempted Answer: <span class="text-slate-900 ml-1"><?= $ans ?: 'N/A' ?></span></span>
+                                                <span class="text-[10px] font-black text-emerald-500 uppercase tracking-widest bg-emerald-50 px-3 py-1 rounded-md border border-emerald-100 shadow-[0_0_15px_rgba(16,185,129,0.1)]">Target: <span class="ml-1 text-slate-900"><?= $q['correct_option'] ?></span></span>
                                             </div>
                                         </div>
                                     </td>
@@ -290,7 +299,7 @@ $res_icons = [
                                         <?php else: ?>
                                             <div class="inline-flex items-center space-x-2 bg-rose-50 text-rose-500 border-2 border-rose-100 px-5 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest shadow-sm">
                                                 <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
-                                                <span>Invalid</span>
+                                                <span>Wrong</span>
                                             </div>
                                         <?php endif; ?>
                                     </td>
@@ -299,9 +308,7 @@ $res_icons = [
                             </tbody>
                         </table>
                     </div>
-                    <div class="bg-indigo-50/20 px-10 py-5 border-t border-indigo-50 text-center">
-                        <p class="text-[9px] font-black text-indigo-300 uppercase tracking-[0.4em]">Integrated Secure Examination Channel Analysis</p>
-                    </div>
+
                 </div>
             </div>
         </div>

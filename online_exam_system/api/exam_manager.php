@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } catch(PDOException $e) {
             $_SESSION['error'] = "Already enrolled or database error.";
         }
-        header('Location: ../student/dashboard.php');
+        header('Location: ../student/dashboard.php?tab=my_enrollments');
         exit;
     }
 
