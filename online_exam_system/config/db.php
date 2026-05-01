@@ -31,6 +31,18 @@ try {
     // Run sync on every global database request
     syncExamStatuses($pdo);
 
+    // ── Remember Me Restoration ───────────────────────────────────────────
+    if (!isset($_SESSION['user_id']) && isset($_COOKIE['remember_user'])) {
+        $stmt_rem = $pdo->prepare("SELECT id, name, role FROM users WHERE id = ?");
+        $stmt_rem->execute([$_COOKIE['remember_user']]);
+        $rem_user = $stmt_rem->fetch(PDO::FETCH_ASSOC);
+        if ($rem_user) {
+            $_SESSION['user_id'] = $rem_user['id'];
+            $_SESSION['name'] = $rem_user['name'];
+            $_SESSION['role'] = $rem_user['role'];
+        }
+    }
+
 } catch(PDOException $e) {
     die("Database Connection failed: " . $e->getMessage());
 }

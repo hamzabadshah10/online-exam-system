@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } catch(PDOException $e) {
             $_SESSION['error'] = "Failed to create exam: " . $e->getMessage();
         }
-        header('Location: ../admin/dashboard.php');
+        header('Location: ../admin/dashboard.php?tab=questions');
         exit;
     }
 

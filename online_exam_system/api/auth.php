@@ -21,6 +21,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['name'] = $user['name'];
             $_SESSION['role'] = $user['role'];
             
+            if (isset($_POST['remember'])) {
+                setcookie('remember_user', $user['id'], time() + (30 * 24 * 60 * 60), "/");
+            }
+            
             if ($user['role'] === 'admin') header('Location: ../admin/dashboard.php');
             else header('Location: ../student/dashboard.php');
             exit;
@@ -66,6 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['action'] === 'logout') {
     session_destroy();
+    setcookie('remember_user', '', time() - 3600, "/");
     session_start();
     header('Location: ../index.php');
     exit;

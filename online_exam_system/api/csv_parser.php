@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['csv_file'])) {
         exit;
     }
     
-    header('Location: ../admin/dashboard.php?tab=questions');
+    header('Location: ../admin/dashboard.php?tab=students');
     exit;
 };
 ?>

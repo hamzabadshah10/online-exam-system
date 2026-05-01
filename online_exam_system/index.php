@@ -39,20 +39,6 @@
         </div>
     </nav>
 
-    <?php if(isset($_SESSION['error'])): ?>
-        <div class="container mx-auto px-8 mb-8">
-            <div class="bg-rose-50 border border-rose-100 text-rose-500 px-8 py-4 rounded-2xl text-xs font-black uppercase tracking-widest text-center shadow-sm">
-                <?= htmlspecialchars($_SESSION['error']); unset($_SESSION['error']); ?>
-            </div>
-        </div>
-    <?php endif; ?>
-    <?php if(isset($_SESSION['success'])): ?>
-        <div class="container mx-auto px-8 mb-8">
-            <div class="bg-emerald-50 border border-emerald-100 text-emerald-600 px-8 py-4 rounded-2xl text-xs font-black uppercase tracking-widest text-center shadow-sm">
-                <?= htmlspecialchars($_SESSION['success']); unset($_SESSION['success']); ?>
-            </div>
-        </div>
-    <?php endif; ?>
 
     <!-- Main Content -->
     <main class="container mx-auto px-8 flex-1 flex flex-col lg:flex-row items-center gap-20 py-10 z-10">
@@ -80,9 +66,37 @@
         </div>
 
         <!-- Right: Login Portals -->
-        <div class="flex-1 w-full max-w-2xl grid grid-cols-1 md:grid-cols-2 gap-8 relative">
-            <!-- Decorative Elements behind cards -->
-            <div class="absolute -right-10 top-1/2 -translate-y-1/2 w-80 h-80 border-2 border-indigo-100 rounded-full opacity-40 -z-10"></div>
+        <div class="flex-1 w-full max-w-2xl flex flex-col relative">
+            <!-- Global Error/Success Feedback -->
+            <?php if(isset($_SESSION['error'])): ?>
+                <div class="mb-8 animate-in slide-in-from-top-4 duration-500">
+                    <div class="bg-rose-50 border-2 border-rose-100 p-5 rounded-[2rem] flex items-center justify-center space-x-4 shadow-xl shadow-rose-100/50">
+                        <div class="bg-rose-500 text-white p-2 rounded-xl shadow-lg">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                        </div>
+                        <span class="text-xs font-black text-rose-600 uppercase tracking-widest leading-none">
+                            <?= htmlspecialchars($_SESSION['error']); unset($_SESSION['error']); ?>
+                        </span>
+                    </div>
+                </div>
+            <?php endif; ?>
+
+            <?php if(isset($_SESSION['success'])): ?>
+                <div class="mb-8 animate-in slide-in-from-top-4 duration-500">
+                    <div class="bg-emerald-50 border-2 border-emerald-100 p-5 rounded-[2rem] flex items-center justify-center space-x-4 shadow-xl shadow-emerald-100/50">
+                        <div class="bg-emerald-500 text-white p-2 rounded-xl shadow-lg">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <span class="text-xs font-black text-emerald-600 uppercase tracking-widest leading-none">
+                            <?= htmlspecialchars($_SESSION['success']); unset($_SESSION['success']); ?>
+                        </span>
+                    </div>
+                </div>
+            <?php endif; ?>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative">
+                <!-- Decorative Elements behind cards -->
+                <div class="absolute -right-10 top-1/2 -translate-y-1/2 w-80 h-80 border-2 border-indigo-100 rounded-full opacity-40 -z-10"></div>
             
             <!-- Student Login -->
             <div class="bg-white p-10 rounded-[3rem] shadow-[0_20px_50px_rgba(79,70,229,0.15)] border border-gray-100 relative overflow-hidden group hover:-translate-y-2 transition-all duration-500">
@@ -95,12 +109,12 @@
                         <input type="hidden" name="action" value="login_student">
                         <div class="space-y-2">
                             <label class="text-[10px] font-black text-slate-600 uppercase tracking-widest ml-1">Email Address</label>
-                            <input name="email" type="email" placeholder="student@example.com" class="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl p-4 text-sm font-bold focus:bg-white focus:border-indigo-600 focus:ring-0 transition-all" required/>
+                            <input name="email" type="email" autocomplete="username" placeholder="student@example.com" class="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl p-4 text-sm font-bold focus:bg-white focus:border-indigo-600 focus:ring-0 transition-all" required/>
                         </div>
                         <div class="space-y-2">
                             <label class="text-[10px] font-black text-slate-600 uppercase tracking-widest ml-1">Password</label>
                             <div class="relative">
-                                <input name="password" type="password" placeholder="Enter your password" class="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl p-4 pr-12 text-sm font-bold focus:bg-white focus:border-indigo-600 focus:ring-0 transition-all" required/>
+                                <input name="password" type="password" autocomplete="current-password" placeholder="Enter your password" class="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl p-4 pr-12 text-sm font-bold focus:bg-white focus:border-indigo-600 focus:ring-0 transition-all" required/>
                                 <button type="button" onclick="togglePassword(this)" class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-600 hover:text-indigo-600 transition-colors">
                                     <svg class="w-5 h-5 eye-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
                                 </button>
@@ -134,16 +148,25 @@
                         <input type="hidden" name="action" value="login_admin">
                         <div class="space-y-2">
                             <label class="text-[10px] font-black text-white/70 uppercase tracking-widest ml-1">Admin Email</label>
-                            <input name="email" type="email" value="admin@example.com" class="w-full bg-white/5 border-2 border-white/10 rounded-2xl p-4 text-sm font-bold text-white placeholder-white/50 focus:bg-white/10 focus:border-white focus:ring-0 transition-all" required/>
+                            <input name="email" type="email" autocomplete="username" value="admin@example.com" class="w-full bg-white/5 border-2 border-white/10 rounded-2xl p-4 text-sm font-bold text-white placeholder-white/50 focus:bg-white/10 focus:border-white focus:ring-0 transition-all" required/>
                         </div>
                         <div class="space-y-2">
                             <label class="text-[10px] font-black text-white/70 uppercase tracking-widest ml-1">Admin Password</label>
                             <div class="relative">
-                                <input name="password" type="password" value="admin123" placeholder="Enter your password" class="w-full bg-white/5 border-2 border-white/10 rounded-2xl p-4 pr-12 text-sm font-bold text-white placeholder-white/50 focus:bg-white/10 focus:border-white focus:ring-0 transition-all" required/>
+                                <input name="password" type="password" autocomplete="current-password" value="admin123" placeholder="Enter your password" class="w-full bg-white/5 border-2 border-white/10 rounded-2xl p-4 pr-12 text-sm font-bold text-white placeholder-white/50 focus:bg-white/10 focus:border-white focus:ring-0 transition-all" required/>
                                 <button type="button" onclick="togglePassword(this)" class="absolute right-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-colors">
                                     <svg class="w-5 h-5 eye-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
                                 </button>
                             </div>
+                        </div>
+                        <div class="flex items-center justify-between ml-1">
+                            <label class="flex items-center space-x-3 cursor-pointer group/check">
+                                <div class="relative flex items-center justify-center">
+                                    <input type="checkbox" name="remember" class="peer h-5 w-5 cursor-pointer appearance-none rounded-lg border-2 border-white/10 bg-white/5 transition-all checked:bg-white checked:border-white focus:ring-0 focus:ring-offset-0"/>
+                                    <svg class="absolute h-3 w-3 text-slate-900 opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path></svg>
+                                </div>
+                                <span class="text-[10px] font-black text-white/70 uppercase tracking-widest group-hover/check:text-white transition-colors">Remember Me</span>
+                            </label>
                         </div>
                         <button type="submit" class="w-full bg-white text-slate-900 py-4 rounded-2xl text-xs font-black uppercase tracking-widest shadow-xl hover:bg-slate-100 active:scale-95 transition-all">Admin Login</button>
 
