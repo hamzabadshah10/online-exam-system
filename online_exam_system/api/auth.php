@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             else header('Location: ../student/dashboard.php');
             exit;
         } else {
-            $_SESSION['error'] = "Invalid $expected_role credentials.";
+            $_SESSION['error'] = "Wrong Credentials";
             header('Location: ../index.php');
             exit;
         }

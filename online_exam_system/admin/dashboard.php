@@ -298,15 +298,12 @@ function navLink($currentTab, $linkTab, $label, $icon) {
             <div class="space-y-4">
                 <label class="block text-[11px] font-black text-slate-600 tracking-widest uppercase ml-2">1. Select Target Examination</label>
                 <div class="relative group">
-                    <select name="exam_id" class="w-full bg-white border-2 border-indigo-50 rounded-[1.5rem] text-base p-5 font-black text-slate-700 shadow-xl shadow-indigo-100/30 focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 appearance-none transition-all cursor-pointer" required>
+                    <select name="exam_id" class="w-full bg-white border-2 border-indigo-50 rounded-[1.5rem] text-base p-5 font-black text-slate-700 shadow-xl shadow-indigo-100/30 focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all cursor-pointer" required>
                         <option value="">-- Click to Select Exam --</option>
                         <?php foreach($all_exams as $ex): ?>
                             <option value="<?= $ex['id'] ?>"><?= htmlspecialchars($ex['subject'].' - '.$ex['title']) ?> (<?= $ex['exam_date'] ?>)</option>
                         <?php endforeach; ?>
                     </select>
-                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-6 text-indigo-400 group-hover:text-indigo-600 transition-colors">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
-                    </div>
                 </div>
             </div>
 
@@ -1080,6 +1077,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const uploadForm = document.querySelector('form[action="../api/csv_parser.php"]');
     if (uploadForm) {
         uploadForm.addEventListener('submit', handleUpload);
+    }
+
+    // Auto-refresh for Live Monitor
+    const currentTab = new URLSearchParams(window.location.search).get('tab');
+    if (currentTab === 'live') {
+        setInterval(() => {
+            // We fetch the current page but only replace the table body to avoid flicker
+            fetch(window.location.href)
+                .then(response => response.text())
+                .then(html => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const newTbody = doc.getElementById('live-tbody');
+                    if (newTbody) {
+                        document.getElementById('live-tbody').innerHTML = newTbody.innerHTML;
+                    }
+                });
+        }, 5000); // Refresh every 5 seconds
     }
 });
 </script>

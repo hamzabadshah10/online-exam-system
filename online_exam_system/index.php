@@ -66,37 +66,9 @@
         </div>
 
         <!-- Right: Login Portals -->
-        <div class="flex-1 w-full max-w-2xl flex flex-col relative">
-            <!-- Global Error/Success Feedback -->
-            <?php if(isset($_SESSION['error'])): ?>
-                <div class="mb-8 animate-in slide-in-from-top-4 duration-500">
-                    <div class="bg-rose-50 border-2 border-rose-100 p-5 rounded-[2rem] flex items-center justify-center space-x-4 shadow-xl shadow-rose-100/50">
-                        <div class="bg-rose-500 text-white p-2 rounded-xl shadow-lg">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
-                        </div>
-                        <span class="text-xs font-black text-rose-600 uppercase tracking-widest leading-none">
-                            <?= htmlspecialchars($_SESSION['error']); unset($_SESSION['error']); ?>
-                        </span>
-                    </div>
-                </div>
-            <?php endif; ?>
-
-            <?php if(isset($_SESSION['success'])): ?>
-                <div class="mb-8 animate-in slide-in-from-top-4 duration-500">
-                    <div class="bg-emerald-50 border-2 border-emerald-100 p-5 rounded-[2rem] flex items-center justify-center space-x-4 shadow-xl shadow-emerald-100/50">
-                        <div class="bg-emerald-500 text-white p-2 rounded-xl shadow-lg">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path></svg>
-                        </div>
-                        <span class="text-xs font-black text-emerald-600 uppercase tracking-widest leading-none">
-                            <?= htmlspecialchars($_SESSION['success']); unset($_SESSION['success']); ?>
-                        </span>
-                    </div>
-                </div>
-            <?php endif; ?>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative">
-                <!-- Decorative Elements behind cards -->
-                <div class="absolute -right-10 top-1/2 -translate-y-1/2 w-80 h-80 border-2 border-indigo-100 rounded-full opacity-40 -z-10"></div>
+        <div class="flex-1 w-full max-w-2xl grid grid-cols-1 md:grid-cols-2 gap-8 relative">
+            <!-- Decorative Elements behind cards -->
+            <div class="absolute -right-10 top-1/2 -translate-y-1/2 w-80 h-80 border-2 border-indigo-100 rounded-full opacity-40 -z-10"></div>
             
             <!-- Student Login -->
             <div class="bg-white p-10 rounded-[3rem] shadow-[0_20px_50px_rgba(79,70,229,0.15)] border border-gray-100 relative overflow-hidden group hover:-translate-y-2 transition-all duration-500">
@@ -105,6 +77,17 @@
                         <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"></path></svg>
                     </div>
                     <h3 class="text-2xl font-black text-slate-900 tracking-tighter uppercase mb-6">Student Access</h3>
+                    
+                    <?php if(isset($_SESSION['error'])): ?>
+                         <div class="bg-rose-50 border-2 border-rose-100 p-4 rounded-[1.5rem] mb-6 animate-in zoom-in-95 duration-300 flex items-center space-x-3 shadow-sm">
+                            <div class="bg-rose-500 text-white p-1.5 rounded-lg shadow-lg shadow-rose-200">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                            </div>
+                            <p class="text-[11px] font-black text-rose-600 uppercase tracking-widest leading-tight">
+                                <?= htmlspecialchars($_SESSION['error']); unset($_SESSION['error']); ?>
+                            </p>
+                        </div>
+                    <?php endif; ?>
                     <form action="api/auth.php" method="POST" class="space-y-5">
                         <input type="hidden" name="action" value="login_student">
                         <div class="space-y-2">
@@ -119,15 +102,6 @@
                                     <svg class="w-5 h-5 eye-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
                                 </button>
                             </div>
-                        </div>
-                        <div class="flex items-center justify-between ml-1">
-                            <label class="flex items-center space-x-3 cursor-pointer group/check">
-                                <div class="relative flex items-center justify-center">
-                                    <input type="checkbox" name="remember" class="peer h-5 w-5 cursor-pointer appearance-none rounded-lg border-2 border-slate-100 bg-slate-50 transition-all checked:bg-indigo-600 checked:border-indigo-600 focus:ring-0 focus:ring-offset-0"/>
-                                    <svg class="absolute h-3 w-3 text-white opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path></svg>
-                                </div>
-                                <span class="text-[10px] font-black text-slate-600 uppercase tracking-widest group-hover/check:text-indigo-600 transition-colors">Remember Me</span>
-                            </label>
                         </div>
                         <button type="submit" class="w-full bg-indigo-600 text-white py-4 rounded-2xl text-xs font-black uppercase tracking-widest shadow-lg shadow-indigo-100 hover:bg-indigo-700 active:scale-95 transition-all">Login</button>
                         <p class="text-[9px] font-black text-slate-600 text-center uppercase tracking-widest mt-4">
@@ -144,6 +118,17 @@
                         <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
                     </div>
                     <h3 class="text-2xl font-black tracking-tighter uppercase mb-6">Admin Access</h3>
+                    
+                    <?php if(isset($_SESSION['error'])): ?>
+                        <div class="bg-rose-500/10 border-2 border-rose-500/20 p-4 rounded-[1.5rem] mb-6 animate-in zoom-in-95 duration-300 flex items-center space-x-3 shadow-sm shadow-rose-900/20">
+                            <div class="bg-rose-500 text-white p-1.5 rounded-lg shadow-lg shadow-rose-900/50">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                            </div>
+                            <p class="text-[11px] font-black text-rose-400 uppercase tracking-widest leading-tight">
+                                <?= htmlspecialchars($_SESSION['error']); unset($_SESSION['error']); ?>
+                            </p>
+                        </div>
+                    <?php endif; ?>
                     <form action="api/auth.php" method="POST" class="space-y-5">
                         <input type="hidden" name="action" value="login_admin">
                         <div class="space-y-2">
@@ -158,15 +143,6 @@
                                     <svg class="w-5 h-5 eye-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
                                 </button>
                             </div>
-                        </div>
-                        <div class="flex items-center justify-between ml-1">
-                            <label class="flex items-center space-x-3 cursor-pointer group/check">
-                                <div class="relative flex items-center justify-center">
-                                    <input type="checkbox" name="remember" class="peer h-5 w-5 cursor-pointer appearance-none rounded-lg border-2 border-white/10 bg-white/5 transition-all checked:bg-white checked:border-white focus:ring-0 focus:ring-offset-0"/>
-                                    <svg class="absolute h-3 w-3 text-slate-900 opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path></svg>
-                                </div>
-                                <span class="text-[10px] font-black text-white/70 uppercase tracking-widest group-hover/check:text-white transition-colors">Remember Me</span>
-                            </label>
                         </div>
                         <button type="submit" class="w-full bg-white text-slate-900 py-4 rounded-2xl text-xs font-black uppercase tracking-widest shadow-xl hover:bg-slate-100 active:scale-95 transition-all">Admin Login</button>
 
