@@ -45,6 +45,9 @@ The project follows a clean, modular architecture for maximum maintainability:
 | `📂 database/` | SQL schemas and migration scripts. |
 | `📂 assets/` | Static files (CSS, JS, Images). |
 
+<img width="237" height="284" alt="image" src="https://github.com/user-attachments/assets/61f166f9-ac29-43a9-aea1-f24c95ad2cf7" />
+
+
 ---
 
 ## 🛠️ Tech Stack
