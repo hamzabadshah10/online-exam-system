@@ -90,5 +90,5 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <p align="center">
 Developed with ❤️ for Academic Excellence.
 
-Hamza Badshah |Software Engineer| Pak-Austria Fachhochschule Institute of Applied Sciences and Technology | Department of IT and CS
+Hamza Badshah | Software Engineer | Pak-Austria Fachhochschule Institute of Applied Sciences and Technology | Department of IT and CS
 </p>
