@@ -1,9 +1,32 @@
+<div align="center">
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=200&section=header&text=EduQuest%20Online%20Exam&fontSize=60&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Web%20Development%20%7C%20PHP%20%7C%20MySQL&descAlignY=60&descAlign=50" width="100%"/>
+
+<br/>
+
 # 🎓 EduQuest: Online Examination System
+
+### *A professional, secure, and intuitive digital assessment platform.*
+
+<br/>
 
 [![PHP Version](https://img.shields.io/badge/php-%3E%3D%207.4-8892bf.svg?style=for-the-badge&logo=php)](https://www.php.net/)
 [![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)](https://www.mysql.com/)
 [![Tailwind CSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+[![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
+
+<br/>
+
+[![GitHub Stars](https://img.shields.io/github/stars/hamzabadshah10/online-exam-system?style=for-the-badge&logo=github&color=ffd700)](https://github.com/hamzabadshah10/online-exam-system/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/hamzabadshah10/online-exam-system?style=for-the-badge&logo=github&color=4fc3f7)](https://github.com/hamzabadshah10/online-exam-system/network)
+[![GitHub Issues](https://img.shields.io/github/issues/hamzabadshah10/online-exam-system?style=for-the-badge&logo=github&color=ff7043)](https://github.com/hamzabadshah10/online-exam-system/issues)
+[![License](https://img.shields.io/badge/License-MIT-22c55e?style=for-the-badge)](LICENSE)
+
+</div>
+
+---
+
+## 👩‍💻 About This Repository
 
 **EduQuest** is a professional, high-fidelity examination ecosystem designed for elite institutions. It provides a secure, scalable, and intuitive platform for managing digital assessments, featuring advanced anti-cheat mechanisms and a premium user experience.
 
@@ -45,21 +68,38 @@ The project follows a clean, modular architecture for maximum maintainability:
 | `📂 database/` | SQL schemas and migration scripts. |
 | `📂 assets/` | Static files (CSS, JS, Images). |
 
-<img width="237" height="284" alt="image" src="https://github.com/user-attachments/assets/61f166f9-ac29-43a9-aea1-f24c95ad2cf7" />
-
-
----
-
-## 🛠️ Tech Stack
-
-- **Frontend:** HTML5, Vanilla JavaScript, [Tailwind CSS](https://tailwindcss.com/) (CDN)
-- **Backend:** PHP (>= 7.4)
-- **Database:** MySQL
-- **Typography:** Plus Jakarta Sans & Inter (Google Fonts)
+<div align="center">
+  <img width="50%" alt="EduQuest Preview" src="https://github.com/user-attachments/assets/61f166f9-ac29-43a9-aea1-f24c95ad2cf7" />
+</div>
 
 ---
 
-## ⚙️ Installation Guide
+## 🧠 Skills & Technologies
+
+<div align="center">
+
+### Languages & Core Tools
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-323330?style=flat-square&logo=javascript&logoColor=F7DF1E)
+![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat-square&logo=php&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white)
+
+### Frameworks & Libraries
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)
+![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)
+
+### Concepts Covered
+![Web Development](https://img.shields.io/badge/Web%20Development-6f42c1?style=flat-square)
+![Database Management](https://img.shields.io/badge/Database%20Management-6f42c1?style=flat-square)
+![Security](https://img.shields.io/badge/Security-6f42c1?style=flat-square)
+
+</div>
+
+---
+
+## 🚀 Quick Start
+
+Follow these steps to deploy EduQuest locally:
 
 ### 1. Prerequisites
 - **Web Server:** XAMPP, WAMP, or MAMP.
@@ -78,20 +118,50 @@ The project follows a clean, modular architecture for maximum maintainability:
    ```
 
 ### 3. Launching
-1. Move the project folder to your server's root directory (`htdocs` or `www`).
-2. Start Apache and MySQL via your control panel.
-3. Access the system at `http://localhost/online_exam_system/`.
+```bash
+# Clone the repository into your htdocs/www folder
+git clone https://github.com/hamzabadshah10/online-exam-system.git
+```
+- Start Apache and MySQL via your control panel.
+- Access the system at `http://localhost/online-exam-system/`.
 
 ---
 
-## 📜 License
+## 🤝 Connect & Contribute
 
-Distributed under the MIT License. See `LICENSE` for more information.
+<div align="center">
+
+[![GitHub Follow](https://img.shields.io/github/followers/hamzabadshah10?label=Follow%20on%20GitHub&style=for-the-badge&logo=github&color=181717)](https://github.com/hamzabadshah10)
+[![Star Repo](https://img.shields.io/badge/⭐%20Star%20This%20Repo-ffd700?style=for-the-badge)](https://github.com/hamzabadshah10/online-exam-system/stargazers)
+[![Fork Repo](https://img.shields.io/badge/🍴%20Fork%20This%20Repo-4fc3f7?style=for-the-badge)](https://github.com/hamzabadshah10/online-exam-system/fork)
+
+</div>
+
+Feel free to explore, fork, or reach out with any questions! If you found this repo helpful, please **⭐ star it** — it means a lot! 🙏
 
 ---
 
-<p align="center">
-Developed with ❤️ for Academic Excellence.
+## 📄 License
 
-Hamza Badshah | Software Engineer | Pak-Austria Fachhochschule Institute of Applied Sciences and Technology | Department of IT and CS
-</p>
+Distributed under the **MIT License** — free to use, share, and adapt with attribution.
+
+---
+
+<div align="center">
+
+### 👩‍💻 Author
+
+**Hamza Badshah**
+*Software Engineer | Pak-Austria Fachhochschule Institute of Applied Sciences and Technology*
+
+[![GitHub](https://img.shields.io/badge/GitHub-hamzabadshah10-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/hamzabadshah10)
+
+<br/>
+
+*Developed with ❤️ for Academic Excellence.*
+
+<br/>
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=100&section=footer" width="100%"/>
+
+</div>
